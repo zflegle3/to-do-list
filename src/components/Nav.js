@@ -9,8 +9,8 @@ import closeBtn from "../images/close-dark.png";
 
 
 function Nav(props) {
-    const [formStatus, setFormStatus] = useState(false); //task or //filter
-    const [formType, setFormType] = useState("proj"); //task or //filter
+    const [navStatus, setNavStatus] = useState(false); //task or //filter
+    const [formType, setFormType] = useState(false); //task or //filter
     //props.user
     //props.setUserCurrent()
     
@@ -35,10 +35,10 @@ function Nav(props) {
         // let navBar = document.getElementById()
         switch (e.target.id) {
             case "open-nav":
-                setFormStatus(true);
+                setNavStatus(true);
                 break;
             case "close-nav":
-                setFormStatus(false);
+                setNavStatus(false);
                 break;
             default:
         }
@@ -57,7 +57,7 @@ function Nav(props) {
 
 
 
-    if (formStatus) {
+    if (navStatus) {
         return (
             <div className="nav-left" id="nav-bar">
                 <div className="header">
@@ -69,15 +69,18 @@ function Nav(props) {
                 <div className="controls">
                     <button id="task-btn" onClick={handleClick} className={"button"}>
                         <img id="task-btn" src={newTaskBtn} alt="new task button"></img>
+                        <p id="task-btn">New Task</p>
                     </button>
                     <button id="proj-btn" onClick={handleClick} className={"button"}>
                         <img id="proj-btn" src={newProjBtn} alt="new task button"></img>
+                        <p>New Project</p>
                     </button>
                     <button id="close-nav" onClick={openCloseNav} className={"button-main"}>
                         <img id="close-nav" src={closeBtn} alt="close nav button"></img>
+                        <p>Close</p>
                     </button>
                 </div>
-                <NewItemIn formType={formType}/>
+                <NewItemIn formType={formType} setFormType={setFormType} />
                 <div className="user-profile">
                     <p>{props.user.email}</p>
                     <button onClick={userLogOut}>Log Out</button>
@@ -87,6 +90,8 @@ function Nav(props) {
     } else {
         return (
             <div className="nav-left compact" id="open-nav" onClick={openCloseNav}>
+
+                
                 <div className="header">
                     <div className="siteLogo compact" id="open-nav">
                         <img id="open-nav"></img>

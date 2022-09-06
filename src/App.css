@@ -73,6 +73,8 @@ table {
   --F-1: #2d4430;
   --F-0: #2d4430;
 
+  --error-red: #BF3100;
+
 }
 
 /* MAIN SECTION STYLES*/
@@ -101,7 +103,7 @@ table {
 }
 
 /* Log In */
-.log-in p {
+.log-in p:nth-child(1) {
   font-size: 4rem;
   font-family: 'Barlow', sans-serif;
   padding: 0.5rem 1rem 0.5rem 1rem;
@@ -124,6 +126,13 @@ table {
   box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.15);
   color: var(--D-1);
   transition: 0.5s;
+}
+
+.login-error {
+  font-family: 'Barlow', sans-serif;
+  color: var(--error-red);
+  font-size: 1rem;
+  padding-top: 0.5rem;
 }
 
 

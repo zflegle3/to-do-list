@@ -7,6 +7,8 @@ function Login(props) {
     //props.setUserCurrent()
 
     const signInWithGoogle = () => {
+        let errorOut = document.getElementById;
+        errorOut.innerHtml = "";
         signInWithPopup(props.auth, props.provider)
         .then((result) => {
             // This gives you a Google Access Token. You can use it to access the Google API.
@@ -21,6 +23,7 @@ function Login(props) {
             // Handle Errors here.
             const errorCode = error.code;
             const errorMessage = error.message;
+            errorOut.innerHtml = `${errorMessage}`;
             // The email of the user's account used.
             const email = error.customData.email;
             // The AuthCredential type that was used.
@@ -34,6 +37,7 @@ function Login(props) {
         <div className={"log-in"}>
             <p>toDo List</p>
             <button onClick={signInWithGoogle}>Sign In with Google</button>
+            <p className="login-error"></p>
         </div>
     );
 }

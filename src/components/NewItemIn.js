@@ -3,29 +3,23 @@ import TaskForm from "./TaskForm"
 import ProjectForm from "./ProjectForm"
 
 function NewItemIn(props) {
+    const [formStatus, setFormStatus] = useState(false); //task or //filter
     //props.formType
+    //props.setFormType()
     console.log(props.formType);
-    // const [formType, setFormType] = useState(props.formType); //task or //filter
     
 
 
     if (props.formType === "task") {
         console.log("Render Task Form");
         return (
-            <div>
-                <p>Task</p>
-                <TaskForm />
-            </div>
-
+            <TaskForm setFormType={props.setFormType}/>
         );
     } 
     else if (props.formType === "proj") {
         console.log("Render Project Form");
         return (
-            <div>
-                <p>Project</p>
-                <ProjectForm />
-            </div>
+            <ProjectForm setFormType={props.setFormType}/>
         );
     } 
     else {

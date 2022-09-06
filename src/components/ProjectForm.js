@@ -1,7 +1,7 @@
-import { findAllByTestId } from "@testing-library/react";
 import { useState } from "react";
 
 function ProjectForm(props) {
+    //props.setFormType()
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -15,7 +15,6 @@ function ProjectForm(props) {
             console.log("valid inputs")
             //reset form
             //create and submit 
-
             let data = createProjectData(projInputs);
             form.reset();
             console.log(data);
@@ -45,14 +44,20 @@ function ProjectForm(props) {
         return(obj);
     }
 
+    const closeForm = (e) => {
+        e.preventDefault();
+        props.setFormType(false);
+    }
+
     return (
         <form className="project-input-form" id="proj-form">
             <div className="form-input-item">
-                <label for="proj-name">Project Name:</label>
-                <input type="text" id="proj-name" name="proj-name" class="proj-input" placeholder="Project Name"></input>
+                <label htmlFor="proj-name">Project Name:</label>
+                <input type="text" id="proj-name" name="proj-name" className="proj-input" placeholder="Project Name"></input>
                 <p id="input-err-1">Error</p>
             </div>
-            <button onClick={handleSubmit}>submit</button>
+            <button onClick={handleSubmit}>Create New Project</button>
+            <button onClick={closeForm}>Cancel</button>
         </form>
     );
 }
