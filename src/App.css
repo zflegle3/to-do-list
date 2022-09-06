@@ -145,6 +145,14 @@ Nav Bar
   display: flex;
 }
 
+.user-profile {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+}
+
 
 /* ~~~~~
 Nav Bar Compact

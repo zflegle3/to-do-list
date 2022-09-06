@@ -46,7 +46,7 @@ function App() {
         <div className="content">
           <div className="left"></div>
         </div>
-        <Nav/>
+        <Nav user={userCurrent} setUserCurrent={setUserCurrent} auth={auth}/>
       </div>
     );
   }

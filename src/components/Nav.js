@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { getAuth, signOut } from "firebase/auth";
+
 import NewItemIn from "./NewItemIn";
 import newTaskBtn from "../images/new-task-dark.png";
 import newProjBtn from "../images/new-proj-dark.png";
@@ -6,10 +8,13 @@ import newItemBtn from "../images/new-item-dark.png";
 import closeBtn from "../images/close-dark.png";
 
 
-function Nav() {
+function Nav(props) {
     const [formStatus, setFormStatus] = useState(false); //task or //filter
     const [formType, setFormType] = useState("proj"); //task or //filter
+    //props.user
+    //props.setUserCurrent()
     
+    console.log(props.user)
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -39,6 +44,16 @@ function Nav() {
         }
     }
 
+    const userLogOut = () => {
+        signOut(props.auth).then(() => {
+            // Sign-out successful
+            // Set current user
+            props.setUserCurrent(false);
+        }).catch((error) => {
+        // An error happened.
+        });
+    }
+
 
 
 
@@ -63,6 +78,10 @@ function Nav() {
                     </button>
                 </div>
                 <NewItemIn formType={formType}/>
+                <div className="user-profile">
+                    <p>{props.user.email}</p>
+                    <button onClick={userLogOut}>Log Out</button>
+                </div>
             </div>
           );
     } else {
