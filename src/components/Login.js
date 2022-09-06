@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
+import { doc, getDoc, addDoc, collection, setDoc } from 'firebase/firestore/lite';
 
 function Login(props) {
     //props.auth
     //props.provider
     //props.setUserCurrent()
+    //props.setUserData()
 
     const signInWithGoogle = () => {
         let errorOut = document.getElementById;
@@ -18,6 +20,8 @@ function Login(props) {
             const user = result.user;
             // ...
             props.setUserCurrent(user);
+            //Get or write new doc
+            getUserDoc(user);
             console.log(user);
         }).catch((error) => {
             // Handle Errors here.
@@ -30,7 +34,44 @@ function Login(props) {
             const credential = GoogleAuthProvider.credentialFromError(error);
             // ...
         });
-      };
+    };
+
+   async function getUserDoc(user) {
+        console.log(user);
+        const userDoc = doc(props.db, `users/U-${user.uid}` );
+        //`users/example-user-doc` test case
+        console.log(userDoc);
+        const userDocSnap = await getDoc(userDoc);
+        console.log(userDocSnap.data());
+        if (userDocSnap.exists()) { //if doc exists pull latest messages
+            const docData = userDocSnap.data();
+            console.log(docData);
+            props.setUserData(docData);
+        } else {
+            console.log("create a new doc");
+            //get colleciton
+            // const usersCollection = collection(props.db, "users");
+            //add doc
+            const newDoc = doc(props.db, `users/U-${user.uid}`);
+            const newDocData = {
+                uid: user.uid,
+                email: user.email,
+                name: user.displayName,
+                projects: [],
+                tasks: [],
+            };
+            setDoc(newDoc,newDocData);
+
+        }
+        
+        
+
+        //if doc doesn't exist create new doc
+
+   } 
+
+
+
 
 
     return (

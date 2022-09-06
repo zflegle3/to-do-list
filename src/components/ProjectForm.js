@@ -2,6 +2,7 @@ import { useState } from "react";
 
 function ProjectForm(props) {
     //props.setFormType()
+    //props.db
 
     const handleSubmit = (e) => {
         e.preventDefault();

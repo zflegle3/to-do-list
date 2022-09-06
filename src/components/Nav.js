@@ -13,6 +13,8 @@ function Nav(props) {
     const [formType, setFormType] = useState(false); //task or //filter
     //props.user
     //props.setUserCurrent()
+    //props.db
+    //props.setUserData()
     
     console.log(props.user)
 
@@ -80,7 +82,7 @@ function Nav(props) {
                         <p>Close</p>
                     </button>
                 </div>
-                <NewItemIn formType={formType} setFormType={setFormType} />
+                <NewItemIn formType={formType} setFormType={setFormType} db={props.db} user={props.user} setUserData={props.setUserData}/>
                 <div className="user-profile">
                     <p>{props.user.email}</p>
                     <button onClick={userLogOut}>Log Out</button>

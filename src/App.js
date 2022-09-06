@@ -23,8 +23,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
-// provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-// const db = getFirestore(app);
+const db = getFirestore(app);
 
 
 
@@ -32,13 +31,16 @@ const provider = new GoogleAuthProvider();
 
 function App() {
   const [userCurrent, setUserCurrent] = useState(false);
+  const [userData, setUserData] = useState(false);
+
+  console.log(userData);
 
 
 
 
   if (!userCurrent) {
     return (
-      <Login auth={auth} provider={provider} setUserCurrent={setUserCurrent}/>
+      <Login auth={auth} provider={provider} setUserCurrent={setUserCurrent} setUserData={setUserData} db={db}/>
     );
   } else {
     return (
@@ -46,7 +48,7 @@ function App() {
         <div className="content">
           <div className="left"></div>
         </div>
-        <Nav user={userCurrent} setUserCurrent={setUserCurrent} auth={auth}/>
+        <Nav user={userData} setUserCurrent={setUserCurrent} setUserData={setUserData} auth={auth} db={db}/>
       </div>
     );
   }

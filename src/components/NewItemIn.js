@@ -6,6 +6,9 @@ function NewItemIn(props) {
     const [formStatus, setFormStatus] = useState(false); //task or //filter
     //props.formType
     //props.setFormType()
+    //props.db
+    //props.user
+    //props.setUserData
     console.log(props.formType);
     
 
@@ -13,7 +16,7 @@ function NewItemIn(props) {
     if (props.formType === "task") {
         console.log("Render Task Form");
         return (
-            <TaskForm setFormType={props.setFormType}/>
+            <TaskForm db={props.db} setFormType={props.setFormType} user={props.user} setUserData={props.setUserData}/>
         );
     } 
     else if (props.formType === "proj") {
