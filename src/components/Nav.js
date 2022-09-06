@@ -75,7 +75,7 @@ function Nav(props) {
                     </button>
                     <button id="proj-btn" onClick={handleClick} className={"button"}>
                         <img id="proj-btn" src={newProjBtn} alt="new task button"></img>
-                        <p>New Project</p>
+                        <p id="proj-btn">New Project</p>
                     </button>
                     <button id="close-nav" onClick={openCloseNav} className={"button-main"}>
                         <img id="close-nav" src={closeBtn} alt="close nav button"></img>

@@ -1,8 +1,12 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
+import { doc, getDoc, addDoc, collection, setDoc } from 'firebase/firestore/lite';
 
 function ProjectForm(props) {
     //props.setFormType()
     //props.db
+    //props.user
+    //props.setUserData()
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -16,9 +20,8 @@ function ProjectForm(props) {
             console.log("valid inputs")
             //reset form
             //create and submit 
-            let data = createProjectData(projInputs);
+            createProjectData(projInputs);
             form.reset();
-            console.log(data);
             //write data to backend
         } else {
             console.log("*invalid inputs*")
@@ -38,12 +41,44 @@ function ProjectForm(props) {
         }
     }
 
-    const createProjectData = (inputs) => {
-        let obj = {
-            projectName: inputs[0].value,
+    async function createProjectData(inputs) {
+        //clean inputs
+        let name = inputs[0].value.trim();
+        //creat object
+        let projObj = {
+            id: uuidv4(),
+            title: name,
+            status: true,
         }
-        return(obj);
+        //write object to firebase doc
+        //get doc 
+        const userDoc = doc(props.db, `users/U-${props.user.uid}`);
+        // copy doc
+        const userDocSnap = await getDoc(userDoc);
+        if (userDocSnap.exists()) {
+            let docDataCopy = userDocSnap.data();
+            docDataCopy.projects.push(projObj);
+            //set display update
+            props.setUserData(docDataCopy);
+            //setDoc
+            console.log(docDataCopy);
+            setDoc(userDoc,docDataCopy);
+        } else {
+            console.log("error, no user doc found, cant create project.");
+        };
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
     const closeForm = (e) => {
         e.preventDefault();

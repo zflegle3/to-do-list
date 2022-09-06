@@ -22,7 +22,7 @@ function NewItemIn(props) {
     else if (props.formType === "proj") {
         console.log("Render Project Form");
         return (
-            <ProjectForm setFormType={props.setFormType}/>
+            <ProjectForm db={props.db} setFormType={props.setFormType} user={props.user} setUserData={props.setUserData}/>
         );
     } 
     else {
