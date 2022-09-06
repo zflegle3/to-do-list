@@ -44,9 +44,12 @@ table {
 
 @import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
 
+/* FIREBASE */
+
+
+
 
 /* GENERAL DOCUMENT STYLES*/
-
 * {
   font-family: 'Barlow', sans-serif;
   font-size: 10px;
@@ -54,16 +57,21 @@ table {
   --bkgnd-2: green;
   --bkgnd-3: orange;
 
-  --A-0: #93B7BE;
+  --A-1: rgb(111, 174, 187);
+  --A-0: rgb(147, 183, 190);
 
   --B-0: #F1FFFA;
 
   --C-0: #D5C7BC;
 
+  --D-1: #9a3357;
   --D-0: #785964;
 
-  --E-0: #2d4430;
-  --E-0: #2d4430;
+  --E-1: #454545;
+  --E-0: #454545;
+  
+  --F-1: #2d4430;
+  --F-0: #2d4430;
 
 }
 
@@ -80,6 +88,42 @@ table {
 .content {
   grid-area: 1/2/2/3;
   background-color: var(--bkgnd-2);
+}
+
+.log-in {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--C-0);
+}
+
+/* Log In */
+.log-in p {
+  font-size: 4rem;
+  font-family: 'Barlow', sans-serif;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 0.3rem;
+  color: var(--E-0);
+}
+
+.log-in button {
+  background-color: var(--A-1);
+  border: solid 2px var(--A-1);
+  color: var(--E-0);
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 0.3rem;
+  transition: 0.5s;
+}
+
+.log-in button:hover {
+  border: dashed 2px var(--E-0);
+  box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.15);
+  color: var(--D-1);
+  transition: 0.5s;
 }
 
 
