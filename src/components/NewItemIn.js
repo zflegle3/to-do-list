@@ -27,7 +27,7 @@ function NewItemIn(props) {
     } 
     else {
         return (
-            <p>Nothing</p>
+            <div></div>
         );
     }
 }

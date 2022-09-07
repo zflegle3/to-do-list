@@ -68,6 +68,7 @@ table {
 
   --E-1: #454545;
   --E-0: #454545;
+  --E-2: #222222;
   
   --F-1: #2d4430;
   --F-0: #2d4430;
@@ -109,7 +110,7 @@ table {
 
 /* Log In */
 .log-in p:nth-child(1) {
-  font-size: 4rem;
+  font-size: 8rem;
   font-family: 'Barlow', sans-serif;
   padding: 0.5rem 1rem 0.5rem 1rem;
   border-radius: 0.3rem;
@@ -120,7 +121,7 @@ table {
   background-color: var(--A-1);
   border: solid 2px var(--A-1);
   color: var(--E-0);
-  font-size: 1.5rem;
+  font-size: 2rem;
   padding: 0.5rem 1rem 0.5rem 1rem;
   border-radius: 0.3rem;
   transition: 0.5s;
@@ -128,6 +129,7 @@ table {
 
 .log-in button:hover {
   border: dashed 2px var(--E-0);
+  background-color: var(--A-0);
   box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.15);
   color: var(--D-1);
   transition: 0.5s;
@@ -147,6 +149,7 @@ Nav Bar
 .nav-left {
   grid-area: 1/1/2/2;
   background-color: var(--E-1);
+
   transition: width 1s;
   display: flex;
   flex-direction: column;
@@ -188,6 +191,7 @@ Nav Bar Compact
   justify-content: center;
   flex-direction: row;
   color: var(--C-0);
+  padding: 1rem;
 }
 
 .siteLogo p {
@@ -275,7 +279,7 @@ button:hover p {
   visibility: hidden;
   font-family: 'Barlow', sans-serif;
   font-size: 1.2rem;
-  color: var(--bkgnd-highlight);
+  color: var(--text-red);
 }
 
 .button-main:hover  {
@@ -283,6 +287,10 @@ button:hover p {
   border-radius: 0.5rem;
   border: none;
   transition: background-color 0.2s;
+}
+
+.button-main:hover p  {
+  color: var(--btn-red-lt);
 }
 
 
@@ -316,7 +324,6 @@ button:hover p {
 
 
 /*Project Form*/
-
 .task-input-form {
   display: flex;
   flex-direction: column;
@@ -392,6 +399,46 @@ button:hover p {
 }
 
 
+/*Project List*/
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  color: var(--A-0);
+  background-color: var(--bkgnd-highlight);
+  padding: 1rem;
+}
+
+.projects-list p {
+  font-size: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.projects-list button {
+  font-size: 2rem;
+  padding: 1rem;
+  color: var(--B-0);
+}
+
+/*Task Tabs*/
+
+
+.tabs-all {
+  display: flex;
+  flex-direction: row;
+}
+
+.proj-tab {
+  background-color: var(--B-0);
+  border-right: solid 1px var(--E-1);
+}
+
+.proj-tab > p {
+  font-size: 1.5rem;
+  padding: 1rem;
+  background-color: var(--bkgnd-highlight);
+}
 
 
 

@@ -16,14 +16,11 @@ function TaskTabs(props) {
     // console.log(props.tabData);
     
     let tabsAll = props.tabData.map((tabDataItem) => 
-        <div>
-            <Tab key={uuidv4()} tabDataItem={tabDataItem} user={props.user} />
-        </div>
+        <Tab key={uuidv4()} tabDataItem={tabDataItem} user={props.user} />
     )
 
     return (
         <div className={"tabs-all"}>
-            <p>Tabs</p>
             {tabsAll}
         </div>
     );

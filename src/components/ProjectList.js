@@ -46,7 +46,7 @@ function ProjectList(props) {
 
 
     return (
-        <div className={"projects-item"}>
+        <div className={"projects-list"}>
             <p>Projects:</p>
             {tasksAll}
         </div>
