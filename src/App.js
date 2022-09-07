@@ -1,13 +1,13 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 import { getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
-
-
-import logo from './logo.svg';
 import { useState } from "react";
+
+
 import './App.css';
 import Nav from "./components/Nav";
 import Login from "./components/Login"
+import TaskTabs from "./components/TaskTabs"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -32,23 +32,22 @@ const db = getFirestore(app);
 function App() {
   const [userCurrent, setUserCurrent] = useState(false);
   const [userData, setUserData] = useState(false);
+  const [tabData, setTabData] = useState([{filterType: "all", filterValue: "all"}]);
 
   console.log(userData);
 
 
 
 
-  if (!userCurrent) {
+  if (!userData) {
     return (
       <Login auth={auth} provider={provider} setUserCurrent={setUserCurrent} setUserData={setUserData} db={db}/>
     );
   } else {
     return (
       <div className="App">
-        <div className="content">
-          <div className="left"></div>
-        </div>
         <Nav user={userData} setUserCurrent={setUserCurrent} setUserData={setUserData} auth={auth} db={db}/>
+        <TaskTabs tabData={tabData} user={userData} setUserCurrent={setUserCurrent} setUserData={setUserData} auth={auth} db={db}/>
       </div>
     );
   }

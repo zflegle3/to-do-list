@@ -10,18 +10,18 @@ function TaskForm(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(e);
+        // console.log(e);
         //get form variables/elements
         let form = document.getElementById("task-form");
         let taskInputs = document.querySelectorAll(".task-input");
         //validate variable
         if (validateVars(taskInputs)) {
-            console.log("valid inputs")
+            // console.log("valid inputs")
             //reset form
             //create and submit 
-            let data = createTaskData(taskInputs);
+            createTaskData(taskInputs);
             form.reset();
-            console.log(data);
+            // console.log(data);
             //write data to backend
         } else {
             console.log("*invalid inputs*")
@@ -31,7 +31,7 @@ function TaskForm(props) {
     }
 
     const validateVars = (inputs) => {
-        console.log(inputs);
+        // console.log(inputs);
         inputs.className = "task-input";
         if (inputs[0].value.length < 1) {
             document.getElementById("task-input-err-1").className="input-error"
@@ -43,7 +43,7 @@ function TaskForm(props) {
 
     async function createTaskData(inputs) {
         //clean inputs
-        console.log(inputs[1].value);
+        // console.log(inputs[1].value);
         let titleIn = inputs[0].value.trim();
         let descIn = inputs[1].value.trim();
         let dateIn = inputs[2].value;
@@ -59,18 +59,18 @@ function TaskForm(props) {
         }
         //write object to firebase doc
         //get doc 
-        console.log(props.user.uid);
+        // console.log(props.user.uid);
         const userDoc = doc(props.db, `users/U-${props.user.uid}`);
         // copy doc
         const userDocSnap = await getDoc(userDoc);
-        console.log(userDocSnap.data());
+        // console.log(userDocSnap.data());
         if (userDocSnap.exists()) {
             let docDataCopy = userDocSnap.data();
             docDataCopy.tasks.push(taskObj);
             //set display update
             props.setUserData(docDataCopy);
             //setDoc
-            console.log(docDataCopy);
+            // console.log(docDataCopy);
             setDoc(userDoc,docDataCopy);
         } else {
             console.log("error, no user doc found");

@@ -16,11 +16,10 @@ function Nav(props) {
     //props.db
     //props.setUserData()
     
-    console.log(props.user)
+    // console.log(props.user)
 
     const handleClick = (e) => {
         e.preventDefault();
-        console.log(e.target.id)
         switch (e.target.id) {
             case "task-btn":
                 setFormType("task");

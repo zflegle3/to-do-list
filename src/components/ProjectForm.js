@@ -10,28 +10,28 @@ function ProjectForm(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(e);
+        // console.log(e);
         let form = document.getElementById("proj-form");
         let projInputs = document.querySelectorAll(".proj-input");
         // console.log(projInputs[0].value);
         //get form variables
         //validate variable
         if (validateVars(projInputs)) {
-            console.log("valid inputs")
+            // console.log("valid inputs")
             //reset form
             //create and submit 
             createProjectData(projInputs);
             form.reset();
             //write data to backend
         } else {
-            console.log("*invalid inputs*")
+            // console.log("*invalid inputs*")
             //prevent submission
             //report errors
         }
     }
 
     const validateVars = (inputs) => {
-        console.log(inputs);
+        // console.log(inputs);
         inputs.className = "proj-input";
         if (inputs[0].value.length < 1) {
             document.getElementById("input-err-1").className="proj-input error"
@@ -61,24 +61,12 @@ function ProjectForm(props) {
             //set display update
             props.setUserData(docDataCopy);
             //setDoc
-            console.log(docDataCopy);
+            // console.log(docDataCopy);
             setDoc(userDoc,docDataCopy);
         } else {
             console.log("error, no user doc found, cant create project.");
         };
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
     const closeForm = (e) => {
         e.preventDefault();

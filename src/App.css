@@ -84,12 +84,7 @@ table {
   height: 100vh;
   display: flex;
   flex-direction: row;
-  background-color: var(--bkgnd-1);
-}
-
-.content {
-  grid-area: 1/2/2/3;
-  background-color: var(--bkgnd-2);
+  background-color: var(--A-0);
 }
 
 .log-in {

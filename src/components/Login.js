@@ -22,7 +22,7 @@ function Login(props) {
             props.setUserCurrent(user);
             //Get or write new doc
             getUserDoc(user);
-            console.log(user);
+            // console.log(user);
         }).catch((error) => {
             // Handle Errors here.
             const errorCode = error.code;
@@ -37,18 +37,14 @@ function Login(props) {
     };
 
    async function getUserDoc(user) {
-        console.log(user);
+        // console.log(user);
         const userDoc = doc(props.db, `users/U-${user.uid}` );
         //`users/example-user-doc` test case
-        console.log(userDoc);
         const userDocSnap = await getDoc(userDoc);
-        console.log(userDocSnap.data());
         if (userDocSnap.exists()) { //if doc exists pull latest messages
             const docData = userDocSnap.data();
-            console.log(docData);
             props.setUserData(docData);
         } else {
-            console.log("create a new doc");
             //get colleciton
             // const usersCollection = collection(props.db, "users");
             //add doc
