@@ -17,22 +17,28 @@ function Tab(props) {
     switch (props.tabDataItem.filterType) {
         case "all":
             tabTitle= "All Tasks"
-            tasksAll = props.user.tasks.map((task) =>
-                <TaskItem key={uuidv4()} title={task.title}/>
-            );
-            console.log("return all");
+            if (props.user.tasks.length > 0) {
+                tasksAll = props.user.tasks.map((task) =>
+                    <TaskItem key={uuidv4()} title={task.title} date={task.date} desc={task.desc} status={task.status}/>
+                );
+            } else {
+                tasksAll = <p>No tasks for this project.</p>
+            }
             break;
         case "proj":
             console.log("return proj");
             let selectedProj = props.user.projects.filter((proj) => proj.id === props.tabDataItem.filterValue);
             tabTitle= selectedProj[0].title;
             console.log(tabTitle);
+            console.log(props.tabDataItem.filterValue);
             let projTasks = props.user.tasks.filter(task => task.proj === props.tabDataItem.filterValue);
             console.log(projTasks);
             if (projTasks.length >0) {
                 tasksAll = projTasks.map((task) =>
-                    <TaskItem key={uuidv4()} title={task.title}/>
+                    <TaskItem key={uuidv4()} title={task.title} date={task.date} desc={task.desc} status={task.status}/>
                 );
+            } else {
+                tasksAll = <p>No tasks for this project.</p>
             }
             console.log(projTasks);
             break;
