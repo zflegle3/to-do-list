@@ -15,7 +15,6 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font: inherit;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -73,7 +72,17 @@ table {
   --F-1: #2d4430;
   --F-0: #2d4430;
 
-  --error-red: #BF3100;
+  --error-red: #9e0000;
+  --bkgnd-select: rgba(255,255,255,0.15);
+  --bkgnd-highlight: rgba(0, 0, 0, 0.25);
+
+  --btn-green-lt: #C3E991;
+  --btn-green-dk: #3DA35D;
+  --text-green: #084127;
+
+  --btn-red-lt: #e99191;
+  --btn-red-dk: #a33d3d;
+  --text-red: #410808;
 
 }
 
@@ -85,6 +94,7 @@ table {
   display: flex;
   flex-direction: row;
   background-color: var(--A-0);
+  font-family: 'Barlow', sans-serif;
 }
 
 .log-in {
@@ -136,12 +146,11 @@ Nav Bar
 ~~~~~ */
 .nav-left {
   grid-area: 1/1/2/2;
-  background-color: var(--D-0);
-  width: 200px;
+  background-color: var(--E-1);
   transition: width 1s;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
 }
 
 .header{
@@ -178,16 +187,18 @@ Nav Bar Compact
   display: flex;
   justify-content: center;
   flex-direction: row;
+  color: var(--C-0);
 }
 
 .siteLogo p {
   font-family: 'Barlow', sans-serif;
-  font-size: 2rem;
+  font-size: 4rem;
   white-space: nowrap;
 
   position: relative;
   top: 0px;
   left: 0px;
+  padding: 0.5rem 0rem 0.5rem 0rem;
   transform: rotate(0deg);
   transition: transform 1s;
 }
@@ -199,6 +210,7 @@ Nav Bar Compact
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  color: var(--E-0)
 
 }
 
@@ -217,11 +229,60 @@ Nav Bar Compact
 
 /*Controls*/
 .controls {
+  background-color: var(--bkgnd-highlight);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
 
+button {
+  background-color: var(--bkgnd-highlight);
+  border-radius: 0.5rem;
+  border: none;
+  margin: 0.5rem;
+}
+
+button p {
+  font-size: 1.2rem;
+  visibility: hidden;
+  font-family: 'Barlow', sans-serif;
+  font-size: 1.2rem;
+  color: var(black);
+}
+
+button:hover {
+  background-color: var(--bkgnd-select);
+  border: none;
+  box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.35);
+  transition: box-shadow, background-color 0.3s;
+}
+
+button:hover p {
+  visibility: visible;
+  color: var(--B-0);
+  transition: 1s;
 }
 
 .button-main {
+  background-color: var(--bkgnd-highlight);
+  border: none;
+  margin: 0.5rem;
+}
 
+.button-main p {
+  font-size: 1.5rem;
+  visibility: hidden;
+  font-family: 'Barlow', sans-serif;
+  font-size: 1.2rem;
+  color: var(--bkgnd-highlight);
+}
+
+.button-main:hover  {
+  background-color: var(--bkgnd-select);
+  border-radius: 0.5rem;
+  border: none;
+  transition: background-color 0.2s;
 }
 
 
@@ -256,14 +317,78 @@ Nav Bar Compact
 
 /*Project Form*/
 
+.task-input-form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: var(--bkgnd-select);
+}
+
 .project-input-form {
   display: flex;
   flex-direction: column;
+  padding: 1rem;
+  background-color: var(--bkgnd-select);
 }
 
 .form-input-item {
   display: flex;
   flex-direction: column;
+}
+
+.form-input-item label {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.task-input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-input-item p {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  color: var(--error-red)
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem
+}
+
+.submit-button {
+  width: 50%;
+  color: black;
+  background-color: var(--btn-green-dk);
+  margin: 0px;
+  font-size: 1.25rem;
+  padding: 0.25rem;
+}
+
+.submit-button:hover {
+  color: var(--text-green);
+  background-color: var(--btn-green-lt);
+}
+
+.cancel-button {
+  width: 50%;
+  color: black;
+  background-color: var(--btn-red-dk);
+  margin: 0px;
+  font-size: 1.25rem;
+  padding: 0.25rem;
+}
+
+.cancel-button:hover {
+  color: var(--text-red);
+  background-color: var(--btn-red-lt);
 }
 
 

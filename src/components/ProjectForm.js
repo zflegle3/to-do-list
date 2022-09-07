@@ -80,8 +80,10 @@ function ProjectForm(props) {
                 <input type="text" id="proj-name" name="proj-name" className="proj-input" placeholder="Project Name"></input>
                 <p id="input-err-1">Error</p>
             </div>
-            <button onClick={handleSubmit}>Create New Project</button>
-            <button onClick={closeForm}>Cancel</button>
+            <div className="button-container">
+                <button onClick={handleSubmit} className="submit-button">Create New Task</button>
+                <button onClick={closeForm} className="cancel-button">Cancel</button>
+            </div>
         </form>
     );
 }

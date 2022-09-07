@@ -105,8 +105,10 @@ function TaskForm(props) {
                 <input type="select" id="task-proj" className="task-input"></input>
                 <p id="task-input-err-4">Error</p>
             </div>
-            <button onClick={handleSubmit}>Create New Task</button>
-            <button onClick={closeForm}>Cancel</button>
+            <div className="button-container">
+                <button onClick={handleSubmit} className="submit-button">Create New Task</button>
+                <button onClick={closeForm} className="cancel-button">Cancel</button>
+            </div>
         </form>
     );
 }

@@ -2,10 +2,10 @@ import { useState } from "react";
 import { getAuth, signOut } from "firebase/auth";
 
 import NewItemIn from "./NewItemIn";
-import newTaskBtn from "../images/new-task-dark.png";
-import newProjBtn from "../images/new-proj-dark.png";
+import newTaskBtn from "../images/new-task-light.png";
+import newProjBtn from "../images/new-proj-light.png";
 import newItemBtn from "../images/new-item-dark.png";
-import closeBtn from "../images/close-dark.png";
+import closeBtn from "../images/close-light.png";
 import ProjectList from "./ProjectList"
 
 
@@ -67,11 +67,11 @@ function Nav(props) {
                     </div>
                 </div>
                 <div className="controls">
-                    <button id="task-btn" onClick={handleClick} className={"button"}>
+                    <button id="task-btn" onClick={handleClick} className={"controls-btn"}>
                         <img id="task-btn" src={newTaskBtn} alt="new task button"></img>
                         <p id="task-btn">New Task</p>
                     </button>
-                    <button id="proj-btn" onClick={handleClick} className={"button"}>
+                    <button id="proj-btn" onClick={handleClick} className={"controls-btn"}>
                         <img id="proj-btn" src={newProjBtn} alt="new task button"></img>
                         <p id="proj-btn">New Project</p>
                     </button>
