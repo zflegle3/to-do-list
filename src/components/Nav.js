@@ -6,6 +6,7 @@ import newTaskBtn from "../images/new-task-dark.png";
 import newProjBtn from "../images/new-proj-dark.png";
 import newItemBtn from "../images/new-item-dark.png";
 import closeBtn from "../images/close-dark.png";
+import ProjectList from "./ProjectList"
 
 
 function Nav(props) {
@@ -56,8 +57,6 @@ function Nav(props) {
     }
 
 
-
-
     if (navStatus) {
         return (
             <div className="nav-left" id="nav-bar">
@@ -82,6 +81,8 @@ function Nav(props) {
                     </button>
                 </div>
                 <NewItemIn formType={formType} setFormType={setFormType} db={props.db} user={props.user} setUserData={props.setUserData}/>
+                
+                <ProjectList user={props.user} setUserData={props.setUserData} testUpdate={props.testUpdate}/>
                 <div className="user-profile">
                     <p>{props.user.email}</p>
                     <button onClick={userLogOut}>Log Out</button>

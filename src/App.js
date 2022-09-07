@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 import { getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 import './App.css';
@@ -30,11 +30,38 @@ const db = getFirestore(app);
 
 
 function App() {
-  const [userCurrent, setUserCurrent] = useState(false);
-  const [userData, setUserData] = useState(false);
-  const [tabData, setTabData] = useState([{filterType: "all", filterValue: "all"}]);
+  const [userCurrent, setUserCurrent] = useState(false); 
+  const [userData, setUserData] = useState(false); //copy of user's firebase doc (includes tasks/projects)
+  const [tabData, setTabData] = useState([{filterType: "all", filterValue: "all"}]); //tabs selected to display
 
   console.log(userData);
+
+
+  useEffect(() => {
+    console.log("updating user data");
+    console.log(userData);
+  }, [userData.projects]);
+
+
+  const testUpdate = () => {
+    console.log("Working");
+    //check if tab selected
+      //if selected already, remove from tab data 
+      //if not selected, push to tab data 
+    let tempTabs = [{filterType: "all", filterValue: "all"}];
+    for (let i=0; i< userData.projects.length; i++) {
+        if (userData.projects[i].selected === "tab-select") {
+            console.log(userData.projects[i]);
+            tempTabs.push({
+                filterType: "proj",
+                filterValue: `${userData.projects[i].id}`,
+            })
+        }
+    }
+    console.log(tempTabs);
+    // props.setTabData(tempTabs);
+    setTabData(tempTabs);
+  }
 
 
 
@@ -46,8 +73,8 @@ function App() {
   } else {
     return (
       <div className="App">
-        <Nav user={userData} setUserCurrent={setUserCurrent} setUserData={setUserData} auth={auth} db={db}/>
-        <TaskTabs tabData={tabData} user={userData} setUserCurrent={setUserCurrent} setUserData={setUserData} auth={auth} db={db}/>
+        <Nav user={userData} setUserCurrent={setUserCurrent} setUserData={setUserData} auth={auth} db={db} testUpdate={testUpdate}/>
+        <TaskTabs tabData={tabData} setTabData={setTabData} user={userData} setUserCurrent={setUserCurrent} setUserData={setUserData} auth={auth} db={db}/>
       </div>
     );
   }
