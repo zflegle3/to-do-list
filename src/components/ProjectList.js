@@ -11,6 +11,9 @@ function ProjectList(props) {
     //props.setUserData
 
 
+
+
+
     let tasksAll = "";
     const selectProject = (e) => {
         console.log(e.target.id)
@@ -22,7 +25,7 @@ function ProjectList(props) {
                     projectsCopy[i].selected = "tab-select";
                 } else { //deselect it 
                     projectsCopy[i].selected = "tab-de-select";
-                }
+                };
             } else { //if project has selected property already
                 //toggle off/on select
                 if (projectsCopy[i].id === e.target.id) { //toggle selected it 
@@ -30,7 +33,8 @@ function ProjectList(props) {
                         projectsCopy[i].selected = "tab-de-select";
                     } else { //select it
                         projectsCopy[i].selected = "tab-select";
-                    }
+                    };
+                    projectButtonSelectStyling(e);
                 } 
             }
         }
@@ -38,6 +42,10 @@ function ProjectList(props) {
         console.log(userCopy);
         props.setUserData(userCopy);
         props.testUpdate();
+    }
+
+    const projectButtonSelectStyling = (e) => {
+        e.target.classList.toggle("selected");
     }
 
     tasksAll = props.user.projects.map((project) => 

@@ -310,9 +310,6 @@ button.selected p {
 
 
 
-
-
-
 /*Controls Compact*/
 .controls.compact {
   margin-top: 100px;
@@ -458,6 +455,16 @@ button.selected p {
   padding: 1rem;
   background-color: var(--bkgnd-highlight);
 }
+
+
+button.tab-select {
+  background-color: var(--bkgnd-select);
+  border: none;
+  box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.35);
+  transition: box-shadow, background-color 0.3s;
+}
+
+
 
 
 
