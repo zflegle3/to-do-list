@@ -7,6 +7,7 @@ function ProjectForm(props) {
     //props.db
     //props.user
     //props.setUserData()
+    //props.resetControlBtnSelect()
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -70,6 +71,7 @@ function ProjectForm(props) {
 
     const closeForm = (e) => {
         e.preventDefault();
+        props.resetControlBtnSelect();
         props.setFormType(false);
     }
 

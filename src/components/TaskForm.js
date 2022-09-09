@@ -7,6 +7,7 @@ function TaskForm(props) {
     //props.db
     //props.user
     //props.setUserData()
+    //props.resetControlBtnSelect
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -79,6 +80,7 @@ function TaskForm(props) {
 
     const closeForm = (e) => {
         e.preventDefault();
+        props.resetControlBtnSelect();
         props.setFormType(false);
     }
 

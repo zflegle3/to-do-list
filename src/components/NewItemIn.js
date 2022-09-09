@@ -9,6 +9,7 @@ function NewItemIn(props) {
     //props.db
     //props.user
     //props.setUserData
+    //propsresetControlBtnSelect()
     console.log(props.formType);
     
 
@@ -16,13 +17,13 @@ function NewItemIn(props) {
     if (props.formType === "task") {
         console.log("Render Task Form");
         return (
-            <TaskForm db={props.db} setFormType={props.setFormType} user={props.user} setUserData={props.setUserData}/>
+            <TaskForm db={props.db} setFormType={props.setFormType} user={props.user} setUserData={props.setUserData} resetControlBtnSelect={props.resetControlBtnSelect}/>
         );
     } 
     else if (props.formType === "proj") {
         console.log("Render Project Form");
         return (
-            <ProjectForm db={props.db} setFormType={props.setFormType} user={props.user} setUserData={props.setUserData}/>
+            <ProjectForm db={props.db} setFormType={props.setFormType} user={props.user} setUserData={props.setUserData} resetControlBtnSelect={props.resetControlBtnSelect}/>
         );
     } 
     else {
