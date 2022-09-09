@@ -22,7 +22,7 @@ function Tab(props) {
                     <TaskItem key={uuidv4()} title={task.title} date={task.date} desc={task.desc} status={task.status}/>
                 );
             } else {
-                tasksAll = <p>No tasks available.</p>
+                tasksAll = <p >No tasks available.</p>
             }
             break;
         case "proj":
@@ -38,7 +38,7 @@ function Tab(props) {
                     <TaskItem key={uuidv4()} title={task.title} date={task.date} desc={task.desc} status={task.status}/>
                 );
             } else {
-                tasksAll = <p>No tasks for this project.</p>
+                tasksAll = <p className="no-tasks">No tasks assigned to this project.</p>
             }
             console.log(projTasks);
             break;

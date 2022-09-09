@@ -10,12 +10,44 @@ function TaskItem(props) {
     //props.desc
     //props.status
 
+    let statusOut="";
+    if (!props.status) {
+        statusOut= "Complete";
+    }
+
     return (
         <div className={"task-item"}>
-            <p>{props.title}</p>
-            <p>{props.date}</p>
-            <p>{props.desc}</p>
-            <p>{props.status}</p>
+
+            <div className={"task-item-content"}>
+                <p className={"task-item-title"}>{props.title}</p>
+
+                <div className={"task-item-text-item"}>
+                    <p>Description:</p>
+                    <p>{props.desc}</p>
+                </div>
+
+                <div className={"task-item-text-item"}>
+                    <p>Due Date:</p>
+                    <p>{props.desc}</p>
+                </div>
+
+                <div className={"task-item-text-item"}>
+                    <p>Status:</p>
+                    <p>{props.desc}</p>
+                </div>
+
+                <div className={"task-item-text-item"}>
+                    <p>Project:</p>
+                    <p>{props.desc}</p>
+                </div>
+      
+            </div>
+            <div className={"task-item-controls"}>
+                <button class="submit-button">Complete </button>
+                <button class="edit-button">Edit</button>
+                <button class="cancel-button">Delete</button>
+            </div>
+
         </div>
     );
 }

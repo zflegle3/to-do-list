@@ -13,7 +13,6 @@ function Nav(props) {
     const [navStatus, setNavStatus] = useState(false); //task or //filter
     const [formType, setFormType] = useState(false); //task or //filter
     //props.user
-    //props.setUserCurrent()
     //props.db
     //props.setUserData()
     
@@ -52,7 +51,7 @@ function Nav(props) {
         signOut(props.auth).then(() => {
             // Sign-out successful
             // Set current user
-            props.setUserCurrent(false);
+            props.setUserData(false);
         }).catch((error) => {
         // An error happened.
         });
@@ -102,26 +101,24 @@ function Nav(props) {
                 <ProjectList user={props.user} setUserData={props.setUserData} testUpdate={props.testUpdate}/>
                 <div className="user-profile">
                     <p>{props.user.email}</p>
-                    <button onClick={userLogOut}>Log Out</button>
+                    <button class="cancel-button" onClick={userLogOut}>Log Out</button>
                 </div>
             </div>
           );
     } else {
         return (
             <div className="nav-left compact" id="open-nav" onClick={openCloseNav}>
+                <div className="controls compact" id="open-nav">
+                    <img src={newItemBtn} alt="new item button" id="open-nav"></img>
+                </div>
 
-                
-                <div className="header">
+                <div id="open-nav" className="header compact">
                     <div className="siteLogo compact" id="open-nav">
                         <img id="open-nav"></img>
                         <p id="open-nav">toDo List</p>
                     </div>
                 </div>
-                <div className="controls compact" id="open-nav">
-                    <button id="open-nav" className={"button-main compact"}>
-                        <img src={newItemBtn} alt="new item button" id="open-nav"></img>
-                    </button>
-                </div>
+
             </div>
         );
     }

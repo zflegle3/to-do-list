@@ -30,7 +30,7 @@ const db = getFirestore(app);
 
 
 function App() {
-  const [userCurrent, setUserCurrent] = useState(false); 
+  // const [userCurrent, setUserCurrent] = useState(false); 
   const [userData, setUserData] = useState(false); //copy of user's firebase doc (includes tasks/projects)
   const [tabData, setTabData] = useState([{filterType: "all", filterValue: "all"}]); //tabs selected to display
 
@@ -68,13 +68,13 @@ function App() {
 
   if (!userData) {
     return (
-      <Login auth={auth} provider={provider} setUserCurrent={setUserCurrent} setUserData={setUserData} db={db}/>
+      <Login auth={auth} provider={provider}setUserData={setUserData} db={db}/>
     );
   } else {
     return (
       <div className="App">
-        <Nav user={userData} setUserCurrent={setUserCurrent} setUserData={setUserData} auth={auth} db={db} testUpdate={testUpdate}/>
-        <TaskTabs tabData={tabData} setTabData={setTabData} user={userData} setUserCurrent={setUserCurrent} setUserData={setUserData} auth={auth} db={db}/>
+        <Nav user={userData} setUserData={setUserData} auth={auth} db={db} testUpdate={testUpdate}/>
+        <TaskTabs tabData={tabData} setTabData={setTabData} user={userData} setUserData={setUserData} auth={auth} db={db}/>
       </div>
     );
   }

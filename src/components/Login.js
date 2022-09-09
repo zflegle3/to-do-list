@@ -5,7 +5,6 @@ import { doc, getDoc, addDoc, collection, setDoc } from 'firebase/firestore/lite
 function Login(props) {
     //props.auth
     //props.provider
-    //props.setUserCurrent()
     //props.setUserData()
 
     const signInWithGoogle = () => {
@@ -19,7 +18,6 @@ function Login(props) {
             // The signed-in user info.
             const user = result.user;
             // ...
-            props.setUserCurrent(user);
             //Get or write new doc
             getUserDoc(user);
             // console.log(user);

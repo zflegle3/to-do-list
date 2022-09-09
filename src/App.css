@@ -162,11 +162,22 @@ Nav Bar
 }
 
 .user-profile {
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--bkgnd-select);
+}
 
+.user-profile p {
+  color: var(--B-0);
+  font-size: 1.75rem;
+  padding-bottom: 1rem;
+}
+
+.user-profile button {
+  
 }
 
 
@@ -175,13 +186,21 @@ Nav Bar Compact
 ~~~~~ */
 .nav-left.compact {
   grid-area: 1/1/2/2;
-  background-color: var(--C-0);
-  width: 75px;
+  /* width: 75px; */
   transition: width 1s;
 }
 
+.nav-left.compact p {
+  color: var(--C-0);
+}
+
 .nav-left.compact:hover {
-  background-color: var(--D-0);
+  background-color: var(--bkgnd-highlight);
+  /* transition: background-color 0.2s; */
+}
+
+.nav-left.compact:hover p {
+  color: var(--C-0);
   /* transition: background-color 0.2s; */
 }
 
@@ -209,8 +228,12 @@ Nav Bar Compact
 
 
 /*Logo Compact*/
+
+.header.compact {
+  flex-grow: 1;
+}
 .siteLogo.compact {
-  position: relative;
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -223,7 +246,7 @@ Nav Bar Compact
   flex-direction: row;
   position: relative;
   top: 50px;
-  left: -50px;
+  left: -55px;
 
   /* writing-mode: vertical-lr; */
   /* text-orientation: upright;   */
@@ -312,9 +335,11 @@ button.selected p {
 
 /*Controls Compact*/
 .controls.compact {
-  margin-top: 100px;
-  flex-grow: 1;
-  width: 100%;
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
 }
 
@@ -333,8 +358,8 @@ button.selected p {
   /* background-color: var(--C-0); */
 }
 
-.button-main.compact img {
-  /* height: 2.5rem; */
+.controls.compact img {
+  height: 5rem;
 }
 
 
@@ -414,10 +439,25 @@ button.selected p {
   background-color: var(--btn-red-lt);
 }
 
+.edit-button {
+  width: 50%;
+  color: var(--B-0);
+  background-color: var(--E-0);
+  margin: 0px;
+  font-size: 1.25rem;
+  padding: 0.25rem;
+}
+
+.edit-button:hover {
+  color: var(--E-0);
+  background-color: var(--bkgnd-highlight);
+}
+
 
 /*Project List*/
 .projects-list {
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   color: var(--A-0);
   background-color: var(--bkgnd-highlight);
@@ -450,8 +490,14 @@ button.selected p {
   border-right: solid 1px var(--E-1);
 }
 
-.proj-tab > p {
-  font-size: 1.5rem;
+.proj-tab > p:nth-child(1) {
+  font-size: 2rem;
+  padding: 1rem;
+  background-color: var(--bkgnd-highlight);
+}
+
+.proj-tab > p:nth-child(1) {
+  font-size: 2rem;
   padding: 1rem;
   background-color: var(--bkgnd-highlight);
 }
@@ -462,6 +508,75 @@ button.tab-select {
   border: none;
   box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.35);
   transition: box-shadow, background-color 0.3s;
+}
+
+.task-item {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-bottom: 1px solid var(--bkgnd-highlight);
+}
+
+.task-item-controls {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+}
+
+.task-item-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0.5rem;
+
+}
+
+.task-item-title {
+  font-size: 2rem;
+  padding: 0rem 0rem 0.5rem 0rem;
+}
+
+.task-item-text-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+}
+
+.task-item-text-item p:nth-child(1) {
+  font-size: 1.4rem;
+}
+
+.task-item-text-item p:nth-child(2) {
+  font-size: 1.4rem;
+
+}
+
+.task-item p:nth-child(2) {
+  font-size: 1.25rem;
+  padding-left: 0.5rem;
+}
+
+.task-item p:nth-child(3) {
+  font-size: 1.25rem;
+  padding-left: 0.5rem;
+}
+
+
+.task-item p:nth-child(4) {
+  font-size: 1.25rem;
+  padding-left: 0.5rem;
+}
+
+.task-item p:nth-child(5) {
+  font-size: 1.25rem;
+  padding-left: 0.5rem;
+}
+
+.no-tasks {
+  font-size: 1.4rem;
+  padding: 1rem;
 }
 
 

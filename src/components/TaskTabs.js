@@ -8,7 +8,6 @@ import Tab from "./Tab";
 function TaskTabs(props) {
     //props.user
     //props.provider
-    //props.setUserCurrent()
     //props.setUserData()
     //props.tabData
     //props.setTabData()
