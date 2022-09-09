@@ -84,28 +84,34 @@ function TaskForm(props) {
         props.setFormType(false);
     }
 
+    const projOptions =  props.user.projects.map((project) => 
+        <option key={uuidv4()} value={project.id}>{project.title}</option>
+    );
 
     return (
         <form className="task-input-form" id="task-form" required>
             <div className="form-input-item">
                 <label htmlFor="task-title">Task Title:</label>
                 <input type="text" id="task-name" name="task-title" className="task-input" placeholder="Task Name"></input>
-                <p id="task-input-err-1">Error 1</p>
+                <p id="task-input-err-1" className="input-error">Error 1</p>
             </div>
             <div className="form-input-item">
                 <label htmlFor="task-desc">Description:</label>
                 <textarea id="task-desc" name="task-desc" className="task-input"></textarea>
-                <p id="task-input-err-2">Error</p>
+                <p id="task-input-err-2" className="input-error">Error</p>
             </div>
             <div className="form-input-item" required>
                 <label htmlFor="task-date">Due Date:</label>
                 <input type="datetime-local" id="task-date" className="task-input"></input>
-                <p id="task-input-err-3">Error</p>
+                <p id="task-input-err-3" className="input-error">Error</p>
             </div>
             <div className="form-input-item">
                 <label htmlFor="task-proj">Project:</label>
-                <input type="select" id="task-proj" className="task-input"></input>
-                <p id="task-input-err-4">Error</p>
+                <select id="task-proj" className="task-input">
+                    <option value="none">None</option>
+                    {projOptions}
+                </select>
+                <p id="task-input-err-4" className="input-error">Error</p>
             </div>
             <div className="button-container">
                 <button onClick={handleSubmit} className="submit-button">Create New Task</button>

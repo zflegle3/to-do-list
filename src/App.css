@@ -167,11 +167,11 @@ Nav Bar
   justify-content: flex-end;
   align-items: center;
   padding: 1rem;
-  background-color: var(--bkgnd-select);
+  background-color: var(--E-0);
 }
 
 .user-profile p {
-  color: var(--B-0);
+  color: var(--C-0);
   font-size: 1.75rem;
   padding-bottom: 1rem;
 }
@@ -188,6 +188,7 @@ Nav Bar Compact
   grid-area: 1/1/2/2;
   /* width: 75px; */
   transition: width 1s;
+  cursor: pointer;
 }
 
 .nav-left.compact p {
@@ -268,6 +269,7 @@ button {
   border-radius: 0.5rem;
   border: none;
   margin: 0.5rem;
+  cursor: pointer;
 }
 
 button p {
@@ -364,7 +366,7 @@ button.selected p {
 
 
 
-/*Project Form*/
+/*Task & Project Form*/
 .task-input-form {
   display: flex;
   flex-direction: column;
@@ -397,11 +399,24 @@ button.selected p {
   margin-bottom: 0.5rem;
 }
 
-.form-input-item p {
+.proj-input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.input-error {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
   padding-left: 0.5rem;
-  color: var(--error-red)
+  color: var(--error-red);
+  visibility: hidden;
+}
+
+.input-error.erroneous {
+  visibility: visible;
 }
 
 .button-container {
@@ -454,6 +469,10 @@ button.selected p {
 }
 
 
+
+
+
+
 /*Project List*/
 .projects-list {
   display: flex;
@@ -462,6 +481,7 @@ button.selected p {
   color: var(--A-0);
   background-color: var(--bkgnd-highlight);
   padding: 1rem;
+  overflow-y: scroll;
 }
 
 .projects-list p {
@@ -483,11 +503,14 @@ button.selected p {
 .tabs-all {
   display: flex;
   flex-direction: row;
+  overflow-x: scroll;
 }
 
 .proj-tab {
   background-color: var(--B-0);
   border-right: solid 1px var(--E-1);
+  max-width: 300px;
+  min-width: 200px;
 }
 
 .proj-tab > p:nth-child(1) {

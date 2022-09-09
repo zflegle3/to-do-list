@@ -9,10 +9,19 @@ function TaskItem(props) {
     //props.date
     //props.desc
     //props.status
+    //props.proj
+    //props.user
+    console.log(props.proj);
 
     let statusOut="";
     if (!props.status) {
         statusOut= "Complete";
+    }
+
+    let projectOut = "";
+    if (props.proj !== "none") {
+        let projectSelected = props.user.projects.filter((proj) => proj.id === props.proj);
+        projectOut = projectSelected[0].title;
     }
 
     return (
@@ -28,24 +37,24 @@ function TaskItem(props) {
 
                 <div className={"task-item-text-item"}>
                     <p>Due Date:</p>
-                    <p>{props.desc}</p>
+                    <p>{props.date}</p>
                 </div>
 
                 <div className={"task-item-text-item"}>
                     <p>Status:</p>
-                    <p>{props.desc}</p>
+                    <p>{statusOut}</p>
                 </div>
 
                 <div className={"task-item-text-item"}>
                     <p>Project:</p>
-                    <p>{props.desc}</p>
+                    <p>{projectOut}</p>
                 </div>
       
             </div>
             <div className={"task-item-controls"}>
-                <button class="submit-button">Complete </button>
-                <button class="edit-button">Edit</button>
-                <button class="cancel-button">Delete</button>
+                <button className="submit-button">Complete </button>
+                <button className="edit-button">Edit</button>
+                <button className="cancel-button">Delete</button>
             </div>
 
         </div>

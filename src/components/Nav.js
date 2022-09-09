@@ -58,17 +58,17 @@ function Nav(props) {
     }
 
     const controlSelect = (e) => {
-        console.log(e.target);
+        // console.log(e.target);
         let btnSelected = document.querySelector(`button#${e.target.id}`);
         resetControlBtnSelect()
-        btnSelected.classList = "controls-btn selected"
+        btnSelected.className = "controls-btn selected"
     }
 
     const resetControlBtnSelect = () => {
         let controlBtns = document.querySelectorAll(".controls-btn");
         for (let i=0; i< controlBtns.length; i++) {
-            console.log(controlBtns[i]);
-            controlBtns[i].classList = "controls-btn";
+            // console.log(controlBtns[i]);
+            controlBtns[i].className = "controls-btn";
         }
         
     }
@@ -94,14 +94,14 @@ function Nav(props) {
                     </button>
                     <button id="close-nav" onClick={openCloseNav} className={"button-main"}>
                         <img id="close-nav" src={closeBtn} alt="close nav button"></img>
-                        <p>Close</p>
+                        <p id="close-nav">Close Nav</p>
                     </button>
                 </div>
                 <NewItemIn formType={formType} setFormType={setFormType} db={props.db} user={props.user} setUserData={props.setUserData} resetControlBtnSelect={resetControlBtnSelect}/>
                 <ProjectList user={props.user} setUserData={props.setUserData} testUpdate={props.testUpdate}/>
                 <div className="user-profile">
                     <p>{props.user.email}</p>
-                    <button class="cancel-button" onClick={userLogOut}>Log Out</button>
+                    <button className="cancel-button" onClick={userLogOut}>Log Out</button>
                 </div>
             </div>
           );

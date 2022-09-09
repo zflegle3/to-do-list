@@ -17,6 +17,7 @@ function ProjectForm(props) {
         // console.log(projInputs[0].value);
         //get form variables
         //validate variable
+        resetErrors();
         if (validateVars(projInputs)) {
             // console.log("valid inputs")
             //reset form
@@ -33,12 +34,22 @@ function ProjectForm(props) {
 
     const validateVars = (inputs) => {
         // console.log(inputs);
-        inputs.className = "proj-input";
+        // inputs.className = "input-error";
         if (inputs[0].value.length < 1) {
-            document.getElementById("input-err-1").className="proj-input error"
+            let errorMsg = document.getElementById("proj-input-err-1");
+            errorMsg.className="input-error erroneous";
+            errorMsg.className="input-error erroneous";
             return false;
         } else {
             return true;
+        }
+    }
+
+    const resetErrors = () => {
+        let errorsAll = document.querySelector(".input-error");
+        console.log(errorsAll);
+        for (let i=0; i< errorsAll.length; i++) {
+            errorsAll[i].className = "input-error";
         }
     }
 
@@ -80,7 +91,7 @@ function ProjectForm(props) {
             <div className="form-input-item">
                 <label htmlFor="proj-name">Project Name:</label>
                 <input type="text" id="proj-name" name="proj-name" className="proj-input" placeholder="Project Name"></input>
-                <p id="input-err-1">Error</p>
+                <p id="proj-input-err-1" className="input-error">Must enter a project name</p>
             </div>
             <div className="button-container">
                 <button onClick={handleSubmit} className="submit-button">Create New Task</button>
