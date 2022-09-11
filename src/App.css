@@ -563,8 +563,7 @@ button.tab-select {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: center;
-
+  align-items: flex-start;
 }
 
 .task-item-text-item p:nth-child(1) {

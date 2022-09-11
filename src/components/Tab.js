@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
-import { doc, getDoc, addDoc, collection, setDoc } from 'firebase/firestore/lite';
+// import { getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
+// import { doc, getDoc, addDoc, collection, setDoc } from 'firebase/firestore/lite';
 import { v4 as uuidv4 } from 'uuid';
 
 import TaskItem from "./TaskItem";
@@ -19,7 +19,7 @@ function Tab(props) {
             tabTitle= "All Tasks"
             if (props.user.tasks.length > 0) {
                 tasksAll = props.user.tasks.map((task) =>
-                    <TaskItem key={uuidv4()} title={task.title} date={task.date} desc={task.desc} status={task.status} proj={task.proj} user={props.user}/>
+                <TaskItem key={uuidv4()} taskId={task.id} title={task.title} date={task.date} desc={task.desc} status={task.status} proj={task.proj} user={props.user}/>
                 );
             } else {
                 tasksAll = <p >No tasks available.</p>
@@ -35,7 +35,7 @@ function Tab(props) {
             console.log(projTasks);
             if (projTasks.length >0) {
                 tasksAll = projTasks.map((task) =>
-                <TaskItem key={uuidv4()} title={task.title} date={task.date} desc={task.desc} status={task.status} proj={task.proj} user={props.user}/>
+                <TaskItem key={uuidv4()} taskId={task.id} title={task.title} date={task.date} desc={task.desc} status={task.status} proj={task.proj} user={props.user}/>
                 );
             } else {
                 tasksAll = <p className="no-tasks">No tasks assigned to this project.</p>

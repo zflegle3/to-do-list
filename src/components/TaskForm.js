@@ -89,7 +89,7 @@ function TaskForm(props) {
     );
 
     return (
-        <form className="task-input-form" id="task-form" required>
+        <form className="task-input-form" id="task-form">
             <div className="form-input-item">
                 <label htmlFor="task-title">Task Title:</label>
                 <input type="text" id="task-name" name="task-title" className="task-input" placeholder="Task Name"></input>
