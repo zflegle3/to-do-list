@@ -107,7 +107,10 @@ function Nav(props) {
                             <p id="close-nav">Close Nav</p>
                         </button>
                     </div>
-                    {/* <NewItemIn formType={formType} setFormType={setFormType} db={props.db} user={props.user} setUserData={props.setUserData} resetControlBtnSelect={resetControlBtnSelect}/> */}
+                    <NewItemIn formType={formType} setFormType={setFormType} db={props.db} user={props.user} setUserData={props.setUserData} resetControlBtnSelect={resetControlBtnSelect}/>
+                    <div className={"projects-header"}>
+                        <p>Projects:</p>
+                    </div>
                     <ProjectList user={props.user} setUserData={props.setUserData} testUpdate={props.testUpdate}/>
                     <div className="user-profile">
                         <p>{props.user.email}</p>

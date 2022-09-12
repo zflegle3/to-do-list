@@ -34,24 +34,24 @@ function App() {
   const [userData, setUserData] = useState(false); //copy of user's firebase doc (includes tasks/projects)
   const [tabData, setTabData] = useState([{filterType: "all", filterValue: "all"}]); //tabs selected to display
 
-  console.log(userData);
+  // console.log(userData);
 
 
-  useEffect(() => {
-    console.log("updating user data");
-    console.log(userData);
-  }, [userData.projects]);
+  // useEffect(() => {
+  //   console.log("updating user data");
+  //   console.log(userData);
+  // }, [userData.projects]);
 
 
   const testUpdate = () => {
-    console.log("Working");
+    // console.log("Working");
     //check if tab selected
       //if selected already, remove from tab data 
       //if not selected, push to tab data 
     let tempTabs = [{filterType: "all", filterValue: "all"}];
     for (let i=0; i< userData.projects.length; i++) {
         if (userData.projects[i].selected === "tab-select") {
-            console.log(userData.projects[i]);
+            // console.log(userData.projects[i]);
             tempTabs.push({
                 filterType: "proj",
                 filterValue: `${userData.projects[i].id}`,

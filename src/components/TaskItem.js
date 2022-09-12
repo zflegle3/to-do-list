@@ -23,6 +23,7 @@ function TaskItem(props) {
     let statusOut="";
     let statusStyle =""
     console.log("task status is",props.title,props.status);
+    console.log(typeof props.status);
     if (props.status) {
         if (props.date) {
             //call today's date
@@ -135,7 +136,10 @@ function TaskItem(props) {
         let descIn = inputs[1].value.trim();
         let dateIn = inputs[2].value;
         let statusIn = inputs[3].value;
-        console.log("New",statusIn);
+        let statusOut = false
+        if (statusIn === "true") {
+            statusOut = true
+        };
         let projIn = inputs[4].value;
         let taskObj = {
             id: props.taskId,
@@ -143,7 +147,7 @@ function TaskItem(props) {
             desc: descIn,
             date: dateIn,
             proj: projIn,
-            status: statusIn,
+            status: statusOut,
         }
         //replace tasks in user copy
         tasksCopy[taskIndex] = taskObj;

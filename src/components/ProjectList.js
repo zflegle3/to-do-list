@@ -10,13 +10,9 @@ function ProjectList(props) {
     //props.user
     //props.setUserData
 
-
-
-
-
     let tasksAll = "";
     const selectProject = (e) => {
-        console.log(e.target.id)
+        // console.log(e.target.id)
         let userCopy = props.user;
         let projectsCopy = props.user.projects;
         for (let i=0; i< projectsCopy.length; i++) {
@@ -39,7 +35,7 @@ function ProjectList(props) {
             }
         }
         userCopy.projects = projectsCopy;
-        console.log(userCopy);
+        // console.log(userCopy);
         props.setUserData(userCopy);
         props.testUpdate();
     }
@@ -55,7 +51,6 @@ function ProjectList(props) {
 
     return (
         <div className={"projects-list"}>
-            <p>Projects:</p>
             {tasksAll}
         </div>
     );

@@ -185,11 +185,19 @@ Nav Bar Compact
 
 }
 
+.nav-content.compact:hover {
+  background-color: var(--bkgnd-select);
+
+}
+
 .nav-container {
   visibility: visible;
   transition-property: visibility;
   transition-delay: 1.5s;
   transition-duration: 0s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
 }
 
@@ -509,11 +517,17 @@ button.selected p {
   transition-duration: 0s; */
 }
 
-.projects-list p {
+.projects-header {
+  padding: 1rem 0rem 0rem 1rem;
+  background-color: var(--bkgnd-highlight);
+}
+
+.projects-header p {
   font-size: 2.5rem;
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
+  color: var(--C-0)
 }
 
 .projects-list button {
@@ -537,13 +551,9 @@ button.selected p {
   font-size: 2rem;
   padding: 1rem;
   background-color: var(--bkgnd-highlight);
+  border-bottom: 1px solid var(--bkgnd-highlight);
 }
 
-.proj-tab > p:nth-child(1) {
-  font-size: 2rem;
-  padding: 1rem;
-  background-color: var(--bkgnd-highlight);
-}
 
 
 button.tab-select {
@@ -635,6 +645,30 @@ button.tab-select {
 .no-tasks {
   font-size: 1.4rem;
   padding: 1rem;
+}
+
+/* Edit Form */
+
+.task-edit-form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: var(--bkgnd-highlight);
+  border-bottom: 1px solid var(--bkgnd-highlight);
+}
+
+.form-edit-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-edit-item label {
+  font-size: 1.2rem;
+  padding-bottom: 0.5rem;
+}
+
+.form-edit-item .task-input  {
+  /* background-color: var(--bkgnd-highlight); */
 }
 
 /* Log In Styles */
