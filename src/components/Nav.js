@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { getAuth, signOut } from "firebase/auth";
+import gsap from "gsap";
 
 import NewItemIn from "./NewItemIn";
 import newTaskBtn from "../images/new-task-light.png";
@@ -7,6 +8,8 @@ import newProjBtn from "../images/new-proj-light.png";
 import newItemBtn from "../images/new-item-dark.png";
 import closeBtn from "../images/close-light.png";
 import ProjectList from "./ProjectList"
+
+
 
 
 function Nav(props) {
@@ -35,16 +38,23 @@ function Nav(props) {
 
     const openCloseNav = (e) => {
         e.preventDefault();
+        let nav = document.getElementById("nav-left");
+        console.log(e.target.id);
+        // nav.classList.toggle("compact");
         // let navBar = document.getElementById()
         switch (e.target.id) {
             case "open-nav":
+                // setTimeout(() => ) 
                 setNavStatus(true);
+                nav.classList ="nav-left";
                 break;
             case "close-nav":
                 setNavStatus(false);
+                nav.classList ="nav-left compact";
                 break;
             default:
         }
+
     }
 
     const userLogOut = () => {
@@ -76,49 +86,45 @@ function Nav(props) {
 
     if (navStatus) {
         return (
-            <div className="nav-left" id="nav-bar">
+            <div className="nav-content">
                 <div className="header">
                     <div className="siteLogo">
-                        <img></img>
                         <p>toDo List</p>
                     </div>
                 </div>
-                <div className="controls">
-                    <button id="task-btn" onClick={handleClick} className={"controls-btn"}>
-                        <img id="task-btn" src={newTaskBtn} alt="new task button"></img>
-                        <p id="task-btn">New Task</p>
-                    </button>
-                    <button id="proj-btn" onClick={handleClick} className={"controls-btn"}>
-                        <img id="proj-btn" src={newProjBtn} alt="new task button"></img>
-                        <p id="proj-btn">New Project</p>
-                    </button>
-                    <button id="close-nav" onClick={openCloseNav} className={"button-main"}>
-                        <img id="close-nav" src={closeBtn} alt="close nav button"></img>
-                        <p id="close-nav">Close Nav</p>
-                    </button>
-                </div>
-                <NewItemIn formType={formType} setFormType={setFormType} db={props.db} user={props.user} setUserData={props.setUserData} resetControlBtnSelect={resetControlBtnSelect}/>
-                <ProjectList user={props.user} setUserData={props.setUserData} testUpdate={props.testUpdate}/>
-                <div className="user-profile">
-                    <p>{props.user.email}</p>
-                    <button className="cancel-button" onClick={userLogOut}>Log Out</button>
+                <div className="nav-container">
+                    <div className="controls">
+                        <button id="task-btn" onClick={handleClick} className={"controls-btn"}>
+                            <img id="task-btn" src={newTaskBtn} alt="new task button"></img>
+                            <p id="task-btn">New Task</p>
+                        </button>
+                        <button id="proj-btn" onClick={handleClick} className={"controls-btn"}>
+                            <img id="proj-btn" src={newProjBtn} alt="new task button"></img>
+                            <p id="proj-btn">New Project</p>
+                        </button>
+                        <button id="close-nav" onClick={openCloseNav} className={"button-main"}>
+                            <img id="close-nav" src={closeBtn} alt="close nav button"></img>
+                            <p id="close-nav">Close Nav</p>
+                        </button>
+                    </div>
+                    {/* <NewItemIn formType={formType} setFormType={setFormType} db={props.db} user={props.user} setUserData={props.setUserData} resetControlBtnSelect={resetControlBtnSelect}/> */}
+                    <ProjectList user={props.user} setUserData={props.setUserData} testUpdate={props.testUpdate}/>
+                    <div className="user-profile">
+                        <p>{props.user.email}</p>
+                        <button className="cancel-button" onClick={userLogOut}>Log Out</button>
+                    </div>
                 </div>
             </div>
           );
     } else {
         return (
-            <div className="nav-left compact" id="open-nav" onClick={openCloseNav}>
-                <div className="controls compact" id="open-nav">
-                    <img src={newItemBtn} alt="new item button" id="open-nav"></img>
-                </div>
-
+            <div className="nav-content compact" id="open-nav" onClick={openCloseNav}>
                 <div id="open-nav" className="header compact">
                     <div className="siteLogo compact" id="open-nav">
-                        <img id="open-nav"></img>
                         <p id="open-nav">toDo List</p>
                     </div>
-                </div>
-
+                </div>   
+                <div className="nav-container compact"></div> 
             </div>
         );
     }

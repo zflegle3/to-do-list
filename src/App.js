@@ -58,7 +58,7 @@ function App() {
             })
         }
     }
-    console.log(tempTabs);
+    // console.log(tempTabs);
     // props.setTabData(tempTabs);
     setTabData(tempTabs);
   }
@@ -73,7 +73,9 @@ function App() {
   } else {
     return (
       <div className="App">
-        <Nav user={userData} setUserData={setUserData} auth={auth} db={db} testUpdate={testUpdate}/>
+        <div className="nav-left compact" id="nav-left">
+          <Nav user={userData} setUserData={setUserData} auth={auth} db={db} testUpdate={testUpdate}/>
+        </div>
         <TaskTabs tabData={tabData} setTabData={setTabData} user={userData} setUserData={setUserData} auth={auth} db={db}/>
       </div>
     );

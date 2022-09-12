@@ -50,6 +50,7 @@ table {
 
 /* GENERAL DOCUMENT STYLES*/
 * {
+  box-sizing: border-box;
   font-family: 'Barlow', sans-serif;
   font-size: 10px;
   --bkgnd-1: blue;
@@ -73,7 +74,11 @@ table {
   --F-1: #2d4430;
   --F-0: #2d4430;
 
-  --error-red: #9e0000;
+  --error-red: rgb(158, 0, 0);
+  --shade-red: rgba(158, 0, 0, 0.35); 
+  --shade-orange: rgba(216, 80, 1, 0.45); 
+  --shade-green: rgba(1, 216, 26, 0.35); 
+
   --bkgnd-select: rgba(255,255,255,0.15);
   --bkgnd-highlight: rgba(0, 0, 0, 0.25);
 
@@ -94,7 +99,7 @@ table {
   height: 100vh;
   display: flex;
   flex-direction: row;
-  background-color: var(--A-0);
+  background-color: var(--E-1);
   font-family: 'Barlow', sans-serif;
 }
 
@@ -108,57 +113,35 @@ table {
   background-color: var(--C-0);
 }
 
-/* Log In */
-.log-in p:nth-child(1) {
-  font-size: 8rem;
-  font-family: 'Barlow', sans-serif;
-  padding: 0.5rem 1rem 0.5rem 1rem;
-  border-radius: 0.3rem;
-  color: var(--E-0);
+.nav-left {
+  background-color: var(--E-1);
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  transition-property: width;
+  transition-delay: 0s;
+  transition-duration: 1s;
 }
 
-.log-in button {
-  background-color: var(--A-1);
-  border: solid 2px var(--A-1);
-  color: var(--E-0);
-  font-size: 2rem;
-  padding: 0.5rem 1rem 0.5rem 1rem;
-  border-radius: 0.3rem;
-  transition: 0.5s;
-}
-
-.log-in button:hover {
-  border: dashed 2px var(--E-0);
+.tabs-all {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
   background-color: var(--A-0);
-  box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.15);
-  color: var(--D-1);
-  transition: 0.5s;
-}
-
-.login-error {
-  font-family: 'Barlow', sans-serif;
-  color: var(--error-red);
-  font-size: 1rem;
-  padding-top: 0.5rem;
 }
 
 
 /* ~~~~~
 Nav Bar
 ~~~~~ */
-.nav-left {
-  grid-area: 1/1/2/2;
-  background-color: var(--E-1);
-
-  transition: width 1s;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
 
 .header{
   position: relative;
   display: flex;
+  flex-direction: column;
+  /* background-color: var(--E-1); */
 }
 
 .user-profile {
@@ -168,6 +151,16 @@ Nav Bar
   align-items: center;
   padding: 1rem;
   background-color: var(--E-0);
+  /* transition-property: visibility;
+  transition-delay: 1s;
+  transition-duration: 0s; */
+}
+
+.user-profile.compact {
+  /* visibility: hidden;
+  transition-property: visibility;
+  transition-delay: 0s;
+  transition-duration: 0s; */
 }
 
 .user-profile p {
@@ -184,76 +177,92 @@ Nav Bar
 /* ~~~~~
 Nav Bar Compact
 ~~~~~ */
+
+.nav-content {
+  width: 100%;
+  height: 100%;
+  visibility: visible;
+
+}
+
+.nav-container {
+  visibility: visible;
+  transition-property: visibility;
+  transition-delay: 1.5s;
+  transition-duration: 0s;
+
+}
+
+.nav-container.compact {
+  visibility: hidden;
+  transition-property: visibility;
+  transition-delay: 0s;
+  transition-duration: 0s;
+}
+
+
 .nav-left.compact {
-  grid-area: 1/1/2/2;
-  /* width: 75px; */
-  transition: width 1s;
+  width: 75px;
   cursor: pointer;
+  transition-property: width;
+  transition-delay: 0.5s;
+  transition-duration: 1s;
 }
 
 .nav-left.compact p {
-  color: var(--C-0);
+  /* color: var(--C-0); */
 }
 
 .nav-left.compact:hover {
-  background-color: var(--bkgnd-highlight);
-  /* transition: background-color 0.2s; */
+  /* background-color: var(--bkgnd-highlight);
+  transition: background-color 0.3s; */
 }
 
-.nav-left.compact:hover p {
-  color: var(--C-0);
-  /* transition: background-color 0.2s; */
-}
+
+
 
 /*Logo*/
 .siteLogo {
+  position: absolute;
+  top: 0px;
+  left: 0px;
   display: flex;
-  justify-content: center;
   flex-direction: row;
   color: var(--C-0);
   padding: 1rem;
+  transform: rotate(0deg);
+  transform-origin: bottom left;
+  transition-property: transform, top;
+  transition-delay: 1s;
+  transition-duration: 0.5s;
 }
 
 .siteLogo p {
+  position: relative;
   font-family: 'Barlow', sans-serif;
   font-size: 4rem;
   white-space: nowrap;
-
-  position: relative;
-  top: 0px;
-  left: 0px;
   padding: 0.5rem 0rem 0.5rem 0rem;
-  transform: rotate(0deg);
-  transition: transform 1s;
 }
 
 
 /*Logo Compact*/
-
-.header.compact {
-  flex-grow: 1;
-}
 .siteLogo.compact {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  color: var(--E-0)
-
-}
-
-.siteLogo.compact p {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  top: 50px;
-  left: -55px;
-
-  /* writing-mode: vertical-lr; */
-  /* text-orientation: upright;   */
+  /* width: 50px;
+  height: 500px; */
+  /* left: 80px; */
+  top: -60px;
   transform: rotate(90deg);
-  transition: transform 1s;
+  transition-property: transform, top;
+  transition-delay: 0.25s;
+  transition-duration: 0.75s;
 }
+
+/* .header.compact {
+  flex-grow: 1;
+} */
+
+
 
 /*Controls*/
 .controls {
@@ -261,7 +270,11 @@ Nav Bar Compact
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem;
+  padding: 8rem 0.5rem 0.5rem 0.5rem;
+  /* visibility: visible;
+  transition-property: visibility;
+  transition-delay: 1s;
+  transition-duration: 0s; */
 }
 
 button {
@@ -337,12 +350,14 @@ button.selected p {
 
 /*Controls Compact*/
 .controls.compact {
-  /* width: 100%; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  /* visibility: hidden;
+  transition-property: visibility;
+  transition-delay: 0s;
+  transition-duration: 0s; */
 }
 
 .button-main.compact {
@@ -482,6 +497,16 @@ button.selected p {
   background-color: var(--bkgnd-highlight);
   padding: 1rem;
   overflow-y: scroll;
+  /* transition-property: visibility;
+  transition-delay: 1s;
+  transition-duration: 0s; */
+}
+
+.projects-list.compact {
+  /* visibility: hidden;
+  transition-property: visibility;
+  transition-delay: 0s;
+  transition-duration: 0s; */
 }
 
 .projects-list p {
@@ -497,14 +522,9 @@ button.selected p {
   color: var(--B-0);
 }
 
+
+
 /*Task Tabs*/
-
-
-.tabs-all {
-  display: flex;
-  flex-direction: row;
-  overflow-x: scroll;
-}
 
 .proj-tab {
   background-color: var(--B-0);
@@ -538,6 +558,22 @@ button.tab-select {
   flex-direction: column;
   padding: 1rem;
   border-bottom: 1px solid var(--bkgnd-highlight);
+}
+
+.task-item.past-due {
+  background-color: var(--shade-red);
+}
+
+.task-item.due-hours {
+  background-color: var(--shade-orange);
+}
+
+.task-item.due-min {
+  background-color: var(--shade-orange);
+}
+
+.task-item.complete {
+  background-color: var(--shade-green);
 }
 
 .task-item-controls {
@@ -599,6 +635,40 @@ button.tab-select {
 .no-tasks {
   font-size: 1.4rem;
   padding: 1rem;
+}
+
+/* Log In Styles */
+.log-in p:nth-child(1) {
+  font-size: 8rem;
+  font-family: 'Barlow', sans-serif;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 0.3rem;
+  color: var(--E-0);
+}
+
+.log-in button {
+  background-color: var(--A-1);
+  border: solid 2px var(--A-1);
+  color: var(--E-0);
+  font-size: 2rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 0.3rem;
+  transition: 0.5s;
+}
+
+.log-in button:hover {
+  border: dashed 2px var(--E-0);
+  background-color: var(--A-0);
+  box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.15);
+  color: var(--D-1);
+  transition: 0.5s;
+}
+
+.login-error {
+  font-family: 'Barlow', sans-serif;
+  color: var(--error-red);
+  font-size: 1rem;
+  padding-top: 0.5rem;
 }
 
 
