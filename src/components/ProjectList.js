@@ -8,46 +8,38 @@ import { v4 as uuidv4 } from 'uuid';
 function ProjectList(props) {
     //props.tabData
     //props.user
-    //props.setUserData
+    //props.setUserData()
+    //props.updateTabData
+    // console.log(props.tabData);
 
     let tasksAll = "";
     const selectProject = (e) => {
-        // console.log(e.target.id)
-        let userCopy = props.user;
-        let projectsCopy = props.user.projects;
-        for (let i=0; i< projectsCopy.length; i++) {
-            if (!projectsCopy[i].selected) { //if project doesnt have selected property yet
-                if (projectsCopy[i].id === e.target.id) { //select it 
-                    projectsCopy[i].selected = "tab-select";
-                } else { //deselect it 
-                    projectsCopy[i].selected = "tab-de-select";
-                };
-            } else { //if project has selected property already
-                //toggle off/on select
-                if (projectsCopy[i].id === e.target.id) { //toggle selected it 
-                    if (projectsCopy[i].selected === "tab-select") {
-                        projectsCopy[i].selected = "tab-de-select";
-                    } else { //select it
-                        projectsCopy[i].selected = "tab-select";
-                    };
-                    projectButtonSelectStyling(e);
-                } 
-            }
+        let selectedIndex = props.tabData.findIndex((tabData) => tabData.filterValue === e.target.id);
+        let newTabData = [...props.tabData];
+        if (selectedIndex === -1) { //new project selected > add selection 
+            newTabData.push({
+                filterType: "proj",
+                filterValue: `${e.target.id}`,
+            });
+            props.updateTabData(newTabData); //update tabData by adding new project
+        } else { //project already selected > un-select
+            newTabData.splice(selectedIndex,1);
+            props.updateTabData(newTabData); //update tabData by removing project
         }
-        userCopy.projects = projectsCopy;
-        // console.log(userCopy);
-        props.setUserData(userCopy);
-        props.testUpdate();
     }
 
-    const projectButtonSelectStyling = (e) => {
-        e.target.classList.toggle("selected");
+    const returnButtonClass = (buttonId) => {
+        let selectedIndex = props.tabData.findIndex((tabData) => tabData.filterValue === buttonId);
+        if (selectedIndex === -1) {
+            return "tab-deselect";
+        } else {
+            return "tab-select";
+        }
     }
 
     tasksAll = props.user.projects.map((project) => 
-        <button key={uuidv4()} id={project.id} className={project.selected} onClick={selectProject}>{project.title}</button>
+        <button key={uuidv4()} id={project.id} className={returnButtonClass(project.id)} onClick={selectProject}>{project.title}</button>
     );
-
 
     return (
         <div className={"projects-list"}>

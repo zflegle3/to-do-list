@@ -18,7 +18,8 @@ function Nav(props) {
     //props.user
     //props.db
     //props.setUserData()
-    
+    //props.tabData
+    //props.updateTabData
     // console.log(props.user)
 
     const handleClick = (e) => {
@@ -39,7 +40,7 @@ function Nav(props) {
     const openCloseNav = (e) => {
         e.preventDefault();
         let nav = document.getElementById("nav-left");
-        console.log(e.target.id);
+        // console.log(e.target.id);
         // nav.classList.toggle("compact");
         // let navBar = document.getElementById()
         switch (e.target.id) {
@@ -111,7 +112,7 @@ function Nav(props) {
                     <div className={"projects-header"}>
                         <p>Projects:</p>
                     </div>
-                    <ProjectList user={props.user} setUserData={props.setUserData} testUpdate={props.testUpdate}/>
+                    <ProjectList user={props.user} setUserData={props.setUserData} updateTabData={props.updateTabData} tabData={props.tabData}/>
                     <div className="user-profile">
                         <p>{props.user.email}</p>
                         <button className="cancel-button" onClick={userLogOut}>Log Out</button>

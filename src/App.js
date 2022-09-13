@@ -34,38 +34,12 @@ function App() {
   const [userData, setUserData] = useState(false); //copy of user's firebase doc (includes tasks/projects)
   const [tabData, setTabData] = useState([{filterType: "all", filterValue: "all"}]); //tabs selected to display
 
-  // console.log(userData);
 
-
-  // useEffect(() => {
-  //   console.log("updating user data");
-  //   console.log(userData);
-  // }, [userData.projects]);
-
-
-  const testUpdate = () => {
-    // console.log("Working");
-    //check if tab selected
-      //if selected already, remove from tab data 
-      //if not selected, push to tab data 
-    let tempTabs = [{filterType: "all", filterValue: "all"}];
-    for (let i=0; i< userData.projects.length; i++) {
-        if (userData.projects[i].selected === "tab-select") {
-            // console.log(userData.projects[i]);
-            tempTabs.push({
-                filterType: "proj",
-                filterValue: `${userData.projects[i].id}`,
-            })
-        }
-    }
-    // console.log(tempTabs);
-    // props.setTabData(tempTabs);
-    setTabData(tempTabs);
+  const updateTabData = (newData) => {
+    setTabData(newData);
   }
 
-
-
-
+  console.log(tabData);
   if (!userData) {
     return (
       <Login auth={auth} provider={provider}setUserData={setUserData} db={db}/>
@@ -74,7 +48,7 @@ function App() {
     return (
       <div className="App">
         <div className="nav-left compact" id="nav-left">
-          <Nav user={userData} setUserData={setUserData} auth={auth} db={db} testUpdate={testUpdate}/>
+          <Nav user={userData} setUserData={setUserData} auth={auth} db={db} updateTabData={updateTabData} tabData={tabData} setTabData={setTabData}/>
         </div>
         <TaskTabs tabData={tabData} setTabData={setTabData} user={userData} setUserData={setUserData} auth={auth} db={db}/>
       </div>

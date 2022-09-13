@@ -14,16 +14,16 @@ function TaskItem(props) {
     //props.proj
     //props.user
     //props.setUserData()
-    const [editStatus, setEditStatus] = useState(false);
+    const [editStatus, setEditStatus] = useState(false); //true for edit for, false for task item display
     const [formId, setFormId] = useState(uuidv4())
 
-    console.log(props.user);
+    // console.log(props.user);
 
 
     let statusOut="";
     let statusStyle =""
-    console.log("task status is",props.title,props.status);
-    console.log(typeof props.status);
+    // console.log("task status is",props.title,props.status);
+    // console.log(typeof props.status);
     if (props.status) {
         if (props.date) {
             //call today's date
@@ -33,7 +33,7 @@ function TaskItem(props) {
             let mDiff = Math.round(sDiff/60);
             let hDiff = Math.round(sDiff/3600);
             let dDiff = Math.round(hDiff/24);
-            console.log(mDiff);
+            // console.log(mDiff);
             if (today <= dueDate) {
                 // console.log("Due soon")
                 if (hDiff >= 24) {
@@ -155,7 +155,7 @@ function TaskItem(props) {
         // console.log(tasksCopy);
         //set user var state
         props.setUserData(userCopy);
-        console.log(userCopy);
+        // console.log(userCopy);
         //write user copy doc to firebase
         const userDoc = doc(props.db, `users/U-${props.user.uid}`);
         setDoc(userDoc,userCopy);
