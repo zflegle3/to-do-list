@@ -1,6 +1,3 @@
-import { useState } from "react";
-// import { getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
-// import { doc, getDoc, addDoc, collection, setDoc } from 'firebase/firestore/lite';
 import { v4 as uuidv4 } from 'uuid';
 
 import TaskItem from "./TaskItem";
@@ -10,8 +7,6 @@ function Tab(props) {
     //props.user
     //props.setUserData
     //props.db
-    // console.log(props.tabDataItem);
-    // console.log(props.user.tasks);
 
     let tasksAll;
     let tabTitle;
@@ -24,29 +19,22 @@ function Tab(props) {
                 );
             } else {
                 tasksAll = <p >No tasks available.</p>
-            }
+            };
             break;
         case "proj":
-            // console.log("return proj");
             let selectedProj = props.user.projects.filter((proj) => proj.id === props.tabDataItem.filterValue);
             tabTitle= selectedProj[0].title;
-            // console.log(tabTitle);
-            // console.log(props.tabDataItem.filterValue);
             let projTasks = props.user.tasks.filter(task => task.proj === props.tabDataItem.filterValue);
-            // console.log(projTasks);
             if (projTasks.length >0) {
                 tasksAll = projTasks.map((task) =>
                 <TaskItem key={uuidv4()} taskId={task.id} title={task.title} date={task.date} desc={task.desc} status={task.status} proj={task.proj} user={props.user} setUserData={props.setUserData} db={props.db}/>
                 );
             } else {
                 tasksAll = <p className="no-tasks">No tasks assigned to this project.</p>
-            }
-            // console.log(projTasks);
+            };
             break;
         default:
     }
-
-
 
     return (
         <div className={"proj-tab"}>

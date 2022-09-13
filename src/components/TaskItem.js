@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
-import { getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
-import { doc, getDoc, addDoc, collection, setDoc } from 'firebase/firestore/lite';
+import { useState } from "react";
+import { doc, setDoc } from 'firebase/firestore/lite';
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -15,27 +14,21 @@ function TaskItem(props) {
     //props.user
     //props.setUserData()
     const [editStatus, setEditStatus] = useState(false); //true for edit for, false for task item display
-    const [formId, setFormId] = useState(uuidv4())
+    const [formId, setFormId] = useState(uuidv4()); //random id used to pull input values from edit form
 
-    // console.log(props.user);
 
 
     let statusOut="";
-    let statusStyle =""
-    // console.log("task status is",props.title,props.status);
-    // console.log(typeof props.status);
+    let statusStyle ="";
     if (props.status) {
         if (props.date) {
-            //call today's date
             let today = new Date();
             let dueDate = new Date(props.date);
             let sDiff = Math.abs(today - dueDate)*.001;
             let mDiff = Math.round(sDiff/60);
             let hDiff = Math.round(sDiff/3600);
             let dDiff = Math.round(hDiff/24);
-            // console.log(mDiff);
             if (today <= dueDate) {
-                // console.log("Due soon")
                 if (hDiff >= 24) {
                     statusOut = `Due in ${dDiff} days`;   
                     statusStyle ="due-days";
@@ -48,9 +41,8 @@ function TaskItem(props) {
                 } else {
                     statusOut = `Due in ${mDiff} min`;    
                     statusStyle ="due-min";     
-                }
+                };
             } else {
-                // console.log("Past due by]")
                 statusStyle ="past-due";     
                 if (hDiff >= 24) {
                     statusOut = `Past due by ${dDiff} days`;   
@@ -60,7 +52,7 @@ function TaskItem(props) {
                     statusOut = `Past due by ${hDiff} hour`;   
                 } else {
                     statusOut = `Past due by ${mDiff} min`;     
-                }
+                };
             };
         } else {
             statusOut = `Incomplete`;   
@@ -68,68 +60,69 @@ function TaskItem(props) {
     } else {
         statusStyle ="complete";
         statusOut = `Complete`;     
-    }
+    };
 
+    let dateOut = "No date set"; 
+    if (props.date) {
+        dateOut = new Date(props.date).toLocaleDateString('en-us',{ weekday: 'long', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric' });
+    };
 
     let projectOut = "";
     if (props.proj !== "none") {
         let projectSelected = props.user.projects.filter((proj) => proj.id === props.proj);
         projectOut = projectSelected[0].title;
-    }
+    };
+
+    const projOptions =  props.user.projects.map((project) => 
+        <option key={uuidv4()} value={project.id}>{project.title}</option>
+    );
+
 
 
     const editTask = (e) => {
         e.preventDefault();
         setEditStatus(true);
-    }
+    };
 
     const cancelEdit = (e) => {
         setEditStatus(false);
-    }
+    };
 
     const submitEdit = (e) => {
         e.preventDefault();
-        // console.log("Submit, task:", props.taskId);
         let editForm = document.getElementById(`${formId}-task-edit-form`);
-        // console.log(editForm);
         let formElements = editForm.elements;
         let editValues = [];
         for (let i=0; i< formElements.length; i++) {
-            // console.log(formElements[i]);
             if (formElements[i].className === "task-input") {
-                editValues.push(formElements[i])
+                editValues.push(formElements[i]);
             }
-        }
-        // console.log(editValues);
+        };
         if (validateVars(editValues)) {
             createTaskData(editValues);
             setEditStatus(false);
             editForm.reset();
-            // turn off edit status
-            // console.log(data);
-            //write data to backend
         } else {
-            // console.log("*invalid inputs*")
+            console.log("*invalid inputs*")
             //prevent submission
             //report errors
         }
-    }
+    };
 
     const validateVars = (inputs) => {
-        // console.log(inputs);
         inputs.className = "task-input";
         if (inputs[0].value.length < 1) {
-            document.getElementById("task-edit-err-1").className="input-error"
+            document.getElementById("task-edit-err-1").className="input-error";
             return false;
         } else {
             return true;
         }
-    }
+    };
 
     async function createTaskData(inputs) {
         //copy user & user tasks
         let userCopy = props.user;
-        let tasksCopy = userCopy.tasks;
+        let tasksCopy = [...userCopy.tasks];
         let taskIndex = tasksCopy.findIndex(currentTask => currentTask.id === props.taskId);
         //create new user task obj
         let titleIn = inputs[0].value.trim();
@@ -152,10 +145,8 @@ function TaskItem(props) {
         //replace tasks in user copy
         tasksCopy[taskIndex] = taskObj;
         userCopy.tasks = tasksCopy;
-        // console.log(tasksCopy);
         //set user var state
         props.setUserData(userCopy);
-        // console.log(userCopy);
         //write user copy doc to firebase
         const userDoc = doc(props.db, `users/U-${props.user.uid}`);
         setDoc(userDoc,userCopy);
@@ -164,36 +155,24 @@ function TaskItem(props) {
     async function removeTaskData(inputs) {
         //copy user & user tasks
         let userCopy = props.user;
-        let tasksCopy = userCopy.tasks;
+        let tasksCopy = [...userCopy.tasks];
         let taskIndex = tasksCopy.findIndex(currentTask => currentTask.id === props.taskId);
         //splice out task at selected index
         tasksCopy.splice(taskIndex,1);
-        // console.log(tasksCopy);
         //replace tasks in user copy
         userCopy.tasks = tasksCopy;
-        // //set user var state
+        //set user var state
         props.setUserData(userCopy);
-        // //write user copy doc to firebase
+        //write user copy doc to firebase
         const userDoc = doc(props.db, `users/U-${props.user.uid}`);
         setDoc(userDoc,userCopy);
     }
-
-
-
-    const projOptions =  props.user.projects.map((project) => 
-        <option key={uuidv4()} value={project.id}>{project.title}</option>
-    );
 
     const deleteTask = (e) => {
         e.preventDefault();
         removeTaskData();
         alert("Task Deleted");
     }
-
-
-
-
-
 
 
 
@@ -258,7 +237,8 @@ function TaskItem(props) {
     
                     <div className={"task-item-text-item"}>
                         <p>Due Date:</p>
-                        <p>{props.date}</p>
+
+                        <p>{dateOut}</p>
                     </div>
     
                     <div className={"task-item-text-item"}>

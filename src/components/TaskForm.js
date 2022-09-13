@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
-import { doc, getDoc, addDoc, collection, setDoc } from 'firebase/firestore/lite';
+import { doc, getDoc, setDoc } from 'firebase/firestore/lite';
 
 function TaskForm(props) {
     //props.setFormType()
@@ -11,31 +10,27 @@ function TaskForm(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(e);
         //get form variables/elements
         let form = document.getElementById("task-form");
         let taskInputs = document.querySelectorAll(".task-input");
         //validate variable
         if (validateVars(taskInputs)) {
-            // console.log("valid inputs")
             //reset form
             //create and submit 
             createTaskData(taskInputs);
             form.reset();
-            // console.log(data);
             //write data to backend
         } else {
-            console.log("*invalid inputs*")
+            console.log("*invalid inputs*");
             //prevent submission
             //report errors
         }
     }
 
     const validateVars = (inputs) => {
-        // console.log(inputs);
         inputs.className = "task-input";
         if (inputs[0].value.length < 1) {
-            document.getElementById("task-input-err-1").className="input-error"
+            document.getElementById("task-input-err-1").className="input-error";
             return false;
         } else {
             return true;
@@ -44,7 +39,6 @@ function TaskForm(props) {
 
     async function createTaskData(inputs) {
         //clean inputs
-        // console.log(inputs[1].value);
         let titleIn = inputs[0].value.trim();
         let descIn = inputs[1].value.trim();
         let dateIn = inputs[2].value;
@@ -60,18 +54,15 @@ function TaskForm(props) {
         }
         //write object to firebase doc
         //get doc 
-        // console.log(props.user.uid);
         const userDoc = doc(props.db, `users/U-${props.user.uid}`);
         // copy doc
         const userDocSnap = await getDoc(userDoc);
-        // console.log(userDocSnap.data());
         if (userDocSnap.exists()) {
             let docDataCopy = userDocSnap.data();
             docDataCopy.tasks.push(taskObj);
             //set display update
             props.setUserData(docDataCopy);
             //setDoc
-            // console.log(docDataCopy);
             setDoc(userDoc,docDataCopy);
         } else {
             console.log("error, no user doc found");

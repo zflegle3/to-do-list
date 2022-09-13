@@ -41,11 +41,9 @@ table {
 	border-spacing: 0;
 }
 
+
+/* Imported Styles & Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
-
-/* FIREBASE */
-
-
 
 
 /* GENERAL DOCUMENT STYLES*/
@@ -89,8 +87,9 @@ table {
   --btn-red-lt: #e99191;
   --btn-red-dk: #a33d3d;
   --text-red: #410808;
-
 }
+
+
 
 /* MAIN SECTION STYLES*/
 
@@ -124,6 +123,14 @@ table {
   transition-duration: 1s;
 }
 
+.nav-left.compact {
+  width: 75px;
+  cursor: pointer;
+  transition-property: width;
+  transition-delay: 0.5s;
+  transition-duration: 1s;
+}
+
 .tabs-all {
   width: 100%;
   display: flex;
@@ -133,56 +140,13 @@ table {
 }
 
 
-/* ~~~~~
-Nav Bar
-~~~~~ */
 
-.header{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  /* background-color: var(--E-1); */
-}
-
-.user-profile {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 1rem;
-  background-color: var(--E-0);
-  /* transition-property: visibility;
-  transition-delay: 1s;
-  transition-duration: 0s; */
-}
-
-.user-profile.compact {
-  /* visibility: hidden;
-  transition-property: visibility;
-  transition-delay: 0s;
-  transition-duration: 0s; */
-}
-
-.user-profile p {
-  color: var(--C-0);
-  font-size: 1.75rem;
-  padding-bottom: 1rem;
-}
-
-.user-profile button {
-  
-}
-
-
-/* ~~~~~
-Nav Bar Compact
-~~~~~ */
+/* Nav Bar */
 
 .nav-content {
   width: 100%;
   height: 100%;
   visibility: visible;
-
 }
 
 .nav-content.compact:hover {
@@ -208,28 +172,31 @@ Nav Bar Compact
   transition-duration: 0s;
 }
 
-
-.nav-left.compact {
-  width: 75px;
-  cursor: pointer;
-  transition-property: width;
-  transition-delay: 0.5s;
-  transition-duration: 1s;
+.header{
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
-.nav-left.compact p {
-  /* color: var(--C-0); */
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--E-0);
 }
 
-.nav-left.compact:hover {
-  /* background-color: var(--bkgnd-highlight);
-  transition: background-color 0.3s; */
+.user-profile p {
+  color: var(--C-0);
+  font-size: 1.75rem;
+  padding-bottom: 1rem;
 }
-
 
 
 
 /*Logo*/
+
 .siteLogo {
   position: absolute;
   top: 0px;
@@ -245,6 +212,14 @@ Nav Bar Compact
   transition-duration: 0.5s;
 }
 
+.siteLogo.compact {
+  top: -60px;
+  transform: rotate(90deg);
+  transition-property: transform, top;
+  transition-delay: 0.25s;
+  transition-duration: 0.75s;
+}
+
 .siteLogo p {
   position: relative;
   font-family: 'Barlow', sans-serif;
@@ -254,35 +229,22 @@ Nav Bar Compact
 }
 
 
-/*Logo Compact*/
-.siteLogo.compact {
-  /* width: 50px;
-  height: 500px; */
-  /* left: 80px; */
-  top: -60px;
-  transform: rotate(90deg);
-  transition-property: transform, top;
-  transition-delay: 0.25s;
-  transition-duration: 0.75s;
-}
-
-/* .header.compact {
-  flex-grow: 1;
-} */
-
-
 
 /*Controls*/
+
 .controls {
   background-color: var(--bkgnd-highlight);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 8rem 0.5rem 0.5rem 0.5rem;
-  /* visibility: visible;
-  transition-property: visibility;
-  transition-delay: 1s;
-  transition-duration: 0s; */
+}
+
+.controls.compact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 button {
@@ -356,17 +318,7 @@ button.selected p {
 
 
 
-/*Controls Compact*/
-.controls.compact {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* visibility: hidden;
-  transition-property: visibility;
-  transition-delay: 0s;
-  transition-duration: 0s; */
-}
+/*Nav Open/Close Button*/
 
 .button-main.compact {
   height: 100%;
@@ -379,17 +331,10 @@ button.selected p {
   background-color: transparent;
 }
 
-.button-main.compact:hover {
-  /* background-color: var(--C-0); */
-}
-
-.controls.compact img {
-  height: 5rem;
-}
-
 
 
 /*Task & Project Form*/
+
 .task-input-form {
   display: flex;
   flex-direction: column;
@@ -493,10 +438,8 @@ button.selected p {
 
 
 
-
-
-
 /*Project List*/
+
 .projects-list {
   display: flex;
   flex-grow: 1;
@@ -505,16 +448,6 @@ button.selected p {
   background-color: var(--bkgnd-highlight);
   padding: 1rem;
   overflow-y: scroll;
-  /* transition-property: visibility;
-  transition-delay: 1s;
-  transition-duration: 0s; */
-}
-
-.projects-list.compact {
-  /* visibility: hidden;
-  transition-property: visibility;
-  transition-delay: 0s;
-  transition-duration: 0s; */
 }
 
 .projects-header {
@@ -553,8 +486,6 @@ button.selected p {
   background-color: var(--bkgnd-highlight);
   border-bottom: 1px solid var(--bkgnd-highlight);
 }
-
-
 
 button.tab-select {
   background-color: var(--bkgnd-select);
@@ -647,6 +578,8 @@ button.tab-select {
   padding: 1rem;
 }
 
+
+
 /* Edit Form */
 
 .task-edit-form {
@@ -667,11 +600,10 @@ button.tab-select {
   padding-bottom: 0.5rem;
 }
 
-.form-edit-item .task-input  {
-  /* background-color: var(--bkgnd-highlight); */
-}
+
 
 /* Log In Styles */
+
 .log-in p:nth-child(1) {
   font-size: 8rem;
   font-family: 'Barlow', sans-serif;

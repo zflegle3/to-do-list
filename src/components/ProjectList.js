@@ -1,16 +1,10 @@
-import { useState } from "react";
-import { getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
-import { doc, getDoc, addDoc, collection, setDoc } from 'firebase/firestore/lite';
 import { v4 as uuidv4 } from 'uuid';
-
-// import TaskItem from "./TaskItem";
 
 function ProjectList(props) {
     //props.tabData
     //props.user
     //props.setUserData()
     //props.updateTabData
-    // console.log(props.tabData);
 
     let tasksAll = "";
     const selectProject = (e) => {

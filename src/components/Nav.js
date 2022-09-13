@@ -1,26 +1,21 @@
 import { useState } from "react";
-import { getAuth, signOut } from "firebase/auth";
-import gsap from "gsap";
+import { signOut } from "firebase/auth";
 
 import NewItemIn from "./NewItemIn";
 import newTaskBtn from "../images/new-task-light.png";
 import newProjBtn from "../images/new-proj-light.png";
-import newItemBtn from "../images/new-item-dark.png";
 import closeBtn from "../images/close-light.png";
 import ProjectList from "./ProjectList"
 
 
-
-
 function Nav(props) {
-    const [navStatus, setNavStatus] = useState(false); //task or //filter
-    const [formType, setFormType] = useState(false); //task or //filter
+    const [navStatus, setNavStatus] = useState(false); //true for open false for compact/closed (boolean)
+    const [formType, setFormType] = useState(false); //task or proj (string)
     //props.user
     //props.db
     //props.setUserData()
     //props.tabData
     //props.updateTabData
-    // console.log(props.user)
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -40,9 +35,6 @@ function Nav(props) {
     const openCloseNav = (e) => {
         e.preventDefault();
         let nav = document.getElementById("nav-left");
-        // console.log(e.target.id);
-        // nav.classList.toggle("compact");
-        // let navBar = document.getElementById()
         switch (e.target.id) {
             case "open-nav":
                 // setTimeout(() => ) 
@@ -61,26 +53,23 @@ function Nav(props) {
     const userLogOut = () => {
         signOut(props.auth).then(() => {
             // Sign-out successful
-            // Set current user
             props.setUserData(false);
         }).catch((error) => {
-        // An error happened.
+            // An error happened.
         });
     }
 
     const controlSelect = (e) => {
-        // console.log(e.target);
         let btnSelected = document.querySelector(`button#${e.target.id}`);
-        resetControlBtnSelect()
+        resetControlBtnSelect();
         btnSelected.className = "controls-btn selected"
     }
 
     const resetControlBtnSelect = () => {
         let controlBtns = document.querySelectorAll(".controls-btn");
         for (let i=0; i< controlBtns.length; i++) {
-            // console.log(controlBtns[i]);
             controlBtns[i].className = "controls-btn";
-        }
+        };
         
     }
 

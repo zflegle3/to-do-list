@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
-import { doc, getDoc, addDoc, collection, setDoc } from 'firebase/firestore/lite';
+import { doc, getDoc, setDoc } from 'firebase/firestore/lite';
 
 function ProjectForm(props) {
     //props.setFormType()
@@ -11,30 +10,22 @@ function ProjectForm(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(e);
         let form = document.getElementById("proj-form");
         let projInputs = document.querySelectorAll(".proj-input");
-        // console.log(projInputs[0].value);
-        //get form variables
-        //validate variable
         resetErrors();
         if (validateVars(projInputs)) {
-            // console.log("valid inputs")
             //reset form
             //create and submit 
             createProjectData(projInputs);
             form.reset();
-            //write data to backend
         } else {
-            // console.log("*invalid inputs*")
+            console.log("*invalid inputs*")
             //prevent submission
             //report errors
         }
     }
 
     const validateVars = (inputs) => {
-        // console.log(inputs);
-        // inputs.className = "input-error";
         if (inputs[0].value.length < 1) {
             let errorMsg = document.getElementById("proj-input-err-1");
             errorMsg.className="input-error erroneous";
@@ -47,7 +38,6 @@ function ProjectForm(props) {
 
     const resetErrors = () => {
         let errorsAll = document.querySelector(".input-error");
-        console.log(errorsAll);
         for (let i=0; i< errorsAll.length; i++) {
             errorsAll[i].className = "input-error";
         }
@@ -73,7 +63,6 @@ function ProjectForm(props) {
             //set display update
             props.setUserData(docDataCopy);
             //setDoc
-            // console.log(docDataCopy);
             setDoc(userDoc,docDataCopy);
         } else {
             console.log("error, no user doc found, cant create project.");

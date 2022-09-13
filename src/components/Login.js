@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
-import { doc, getDoc, addDoc, collection, setDoc } from 'firebase/firestore/lite';
+import { GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
+import { doc, getDoc, setDoc } from 'firebase/firestore/lite';
 
 function Login(props) {
     //props.auth
@@ -17,10 +16,8 @@ function Login(props) {
             const token = credential.accessToken;
             // The signed-in user info.
             const user = result.user;
-            // ...
             //Get or write new doc
             getUserDoc(user);
-            // console.log(user);
         }).catch((error) => {
             // Handle Errors here.
             const errorCode = error.code;
@@ -30,12 +27,10 @@ function Login(props) {
             const email = error.customData.email;
             // The AuthCredential type that was used.
             const credential = GoogleAuthProvider.credentialFromError(error);
-            // ...
         });
     };
 
    async function getUserDoc(user) {
-        // console.log(user);
         const userDoc = doc(props.db, `users/U-${user.uid}` );
         //`users/example-user-doc` test case
         const userDocSnap = await getDoc(userDoc);
@@ -43,9 +38,7 @@ function Login(props) {
             const docData = userDocSnap.data();
             props.setUserData(docData);
         } else {
-            //get colleciton
-            // const usersCollection = collection(props.db, "users");
-            //add doc
+            //create & add doc
             const newDoc = doc(props.db, `users/U-${user.uid}`);
             const newDocData = {
                 uid: user.uid,
@@ -55,17 +48,8 @@ function Login(props) {
                 tasks: [],
             };
             setDoc(newDoc,newDocData);
-
         }
-        
-        
-
-        //if doc doesn't exist create new doc
-
    } 
-
-
-
 
 
     return (
