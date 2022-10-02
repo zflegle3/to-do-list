@@ -4,7 +4,9 @@ import { getAuth, GoogleAuthProvider} from 'firebase/auth';
 import { useState } from "react";
 
 import './App.css';
+import './styles/styles.scss';
 
+import Header from "./components/Header"
 import Nav from "./components/Nav";
 import Login from "./components/Login"
 import TaskTabs from "./components/TaskTabs"
@@ -29,24 +31,46 @@ const db = getFirestore(app);
 function App() {
   const [userData, setUserData] = useState(false); //copy of user's firebase doc (includes tasks & projects)
   const [tabData, setTabData] = useState([{filterType: "all", filterValue: "all"}]); //tabs selected to display
+  const [openState, setOpenState] = useState(true); //tabs selected to display
 
   const updateTabData = (newData) => {
     setTabData(newData);
   }
+
+  const toggleNav = () => {
+    if (openState) {
+      setOpenState(false);
+    } else {
+      setOpenState(true);
+    }
+  }
+
+  
 
   if (!userData) {
     return (
       <Login auth={auth} provider={provider}setUserData={setUserData} db={db}/>
     );
   } else {
-    return (
-      <div className="App">
-        <div className="nav-left compact" id="nav-left">
-          <Nav user={userData} setUserData={setUserData} auth={auth} db={db} updateTabData={updateTabData} tabData={tabData} setTabData={setTabData}/>
+    if (openState) {
+      return (
+        <div className="App">
+          <Header openState={openState} toggleNav={toggleNav}/>
+          <div className="nav-left compact" id="nav-left">
+            <Nav user={userData} setUserData={setUserData} auth={auth} db={db} updateTabData={updateTabData} tabData={tabData} setTabData={setTabData}/>
+          </div>
+          <TaskTabs tabData={tabData} setTabData={setTabData} user={userData} setUserData={setUserData} auth={auth} db={db}/>
         </div>
-        <TaskTabs tabData={tabData} setTabData={setTabData} user={userData} setUserData={setUserData} auth={auth} db={db}/>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className="App">
+          <Header openState={openState} toggleNav={toggleNav}/>
+          <TaskTabs tabData={tabData} setTabData={setTabData} user={userData} setUserData={setUserData} auth={auth} db={db}/>
+        </div>
+      );
+    };
+
   };
 };
 

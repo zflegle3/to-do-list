@@ -43,24 +43,27 @@ table {
 
 
 /* Imported Styles & Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap'); */
 
 
 /* GENERAL DOCUMENT STYLES*/
 * {
-  box-sizing: border-box;
+  /* box-sizing: border-box;
   font-family: 'Barlow', sans-serif;
-  font-size: 10px;
+  font-size: 10px; */
   --bkgnd-1: blue;
   --bkgnd-2: green;
   --bkgnd-3: orange;
 
-  --A-1: rgb(111, 174, 187);
+  --A-1: #2779a7;
   --A-0: rgb(147, 183, 190);
 
   --B-0: #F1FFFA;
 
-  --C-0: #D5C7BC;
+  --bg-main: #f4f7f6;
+  --text-main: #ffffff;
+
+  --text-hl: #49c5b6;
 
   --D-1: #9a3357;
   --D-0: #785964;
@@ -103,13 +106,13 @@ table {
 }
 
 .log-in {
-  width: 100vw;
+  /* width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--C-0);
+  background-color: var(--bg-main); */
 }
 
 .nav-left {
@@ -136,7 +139,7 @@ table {
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
-  background-color: var(--A-0);
+  background-color: var(--bg-main);
 }
 
 
@@ -188,7 +191,7 @@ table {
 }
 
 .user-profile p {
-  color: var(--C-0);
+  color: var(--bg-main);
   font-size: 1.75rem;
   padding-bottom: 1rem;
 }
@@ -203,7 +206,7 @@ table {
   left: 0px;
   display: flex;
   flex-direction: row;
-  color: var(--C-0);
+  color: var(--bg-main);
   padding: 1rem;
   transform: rotate(0deg);
   transform-origin: bottom left;
@@ -247,32 +250,60 @@ table {
   align-items: center;
 }
 
-button {
-  background-color: var(--bkgnd-highlight);
-  border-radius: 0.5rem;
+.controls-btn {
+  background-color: transparent;
+  /* border-radius: 0.5rem; */
   border: none;
   margin: 0.5rem;
   cursor: pointer;
 }
 
-button p {
-  font-size: 1.2rem;
+.controls-btn img {
+  padding: 1rem;
+  background-color: var(--bkgnd-highlight);
+  border-radius: 5rem;
+  /* border-radius: 0.5rem; */
+  border: none;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+.controls-btn svg {
+  scale: 1.5;
+  fill: var(--text-main);
+  padding: 1rem;
+  background-color: var(--bkgnd-highlight);
+  border-radius: 5rem;
+  /* border-radius: 0.5rem; */
+  border: none;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+.controls-btn p {
+  font-size: 1.5rem;
   visibility: hidden;
   font-family: 'Barlow', sans-serif;
   font-size: 1.2rem;
-  color: var(black);
 }
 
-button:hover {
-  background-color: var(--bkgnd-select);
+.controls-btn:hover img {
+  background-color: var(--A-1);
   border: none;
   box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.35);
   transition: box-shadow, background-color 0.3s;
 }
 
-button:hover p {
+.controls-btn:hover svg {
+  background-color: var(--A-1);
+  border: none;
+  box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.35);
+  transition: box-shadow, background-color 0.3s;
+}
+
+.controls-btn:hover p {
   visibility: visible;
-  color: var(--B-0);
+  color: var(--text-main);
   transition: 1s;
 }
 
@@ -292,7 +323,7 @@ button:hover p {
 
 .button-main:hover  {
   background-color: var(--bkgnd-select);
-  border-radius: 0.5rem;
+  /* border-radius: 0.5rem; */
   border: none;
   transition: background-color 0.2s;
 }
@@ -303,11 +334,15 @@ button:hover p {
 
 
 /* Selected Button Styles */
-button.selected {
-  background-color: var(--bkgnd-select);
+.controls-btn.selected {
+  /* background-color: var(--bkgnd-select); */
   border: none;
-  box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.35);
+  /* box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.35); */
   transition: box-shadow, background-color 0.3s;
+}
+
+.controls-btn.selected svg {
+  fill: var(--A-1);
 }
 
 button.selected p {
@@ -460,13 +495,31 @@ button.selected p {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
-  color: var(--C-0)
+  color: var(--bg-main)
 }
 
 .projects-list button {
+  border: 1px solid var(--bkgnd-highlight);
+  background-color: var(--bkgnd-highlight);
+  margin: 0.5rem;
   font-size: 2rem;
   padding: 1rem;
+  border-radius: 5rem;
   color: var(--B-0);
+}
+
+.projects-list button:hover {
+  background-color: var(--bkgnd-select);
+  box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.35);
+  transition: box-shadow, background-color 0.3s;
+}
+
+button.tab-select {
+  /* background-color: var(--bkgnd-select); */
+  border: 1px solid var(--text-hl);
+  color: var(--text-hl);
+  box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.35);
+  transition: box-shadow, background-color 0.3s;
 }
 
 
@@ -485,13 +538,6 @@ button.selected p {
   padding: 1rem;
   background-color: var(--bkgnd-highlight);
   border-bottom: 1px solid var(--bkgnd-highlight);
-}
-
-button.tab-select {
-  background-color: var(--bkgnd-select);
-  border: none;
-  box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.35);
-  transition: box-shadow, background-color 0.3s;
 }
 
 .task-item {
@@ -514,7 +560,7 @@ button.tab-select {
 }
 
 .task-item.complete {
-  background-color: var(--shade-green);
+  background-color: var(--text-hl);
 }
 
 .task-item-controls {
@@ -604,30 +650,30 @@ button.tab-select {
 
 /* Log In Styles */
 
-.log-in p:nth-child(1) {
+/* .log-in p:nth-child(1) {
   font-size: 8rem;
   font-family: 'Barlow', sans-serif;
   padding: 0.5rem 1rem 0.5rem 1rem;
   border-radius: 0.3rem;
   color: var(--E-0);
-}
+} */
 
 .log-in button {
-  background-color: var(--A-1);
-  border: solid 2px var(--A-1);
-  color: var(--E-0);
+  /* background-color: var(--A-1);
+  border: solid 1px var(--A-1);
+  color: var(--text-main);
   font-size: 2rem;
   padding: 0.5rem 1rem 0.5rem 1rem;
-  border-radius: 0.3rem;
-  transition: 0.5s;
+  border-radius: 5rem;
+  transition: 0.5s; */
 }
 
 .log-in button:hover {
-  border: dashed 2px var(--E-0);
-  background-color: var(--A-0);
+  /* border: solid 1px var(--text-hl);
+  background-color: var(--bg-main);
   box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.15);
-  color: var(--D-1);
-  transition: 0.5s;
+  color: var(--text-hl);
+  transition: 0.5s; */
 }
 
 .login-error {

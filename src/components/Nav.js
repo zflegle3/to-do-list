@@ -7,6 +7,9 @@ import newProjBtn from "../images/new-proj-light.png";
 import closeBtn from "../images/close-light.png";
 import ProjectList from "./ProjectList"
 
+import { ReactComponent as TaskOutlineSvg } from '../images/task-outline.svg';
+import { ReactComponent as TaskFillSvg } from '../images/task-fill.svg';
+
 
 function Nav(props) {
     const [navStatus, setNavStatus] = useState(false); //true for open false for compact/closed (boolean)
@@ -85,7 +88,8 @@ function Nav(props) {
                 <div className="nav-container">
                     <div className="controls">
                         <button id="task-btn" onClick={handleClick} className={"controls-btn"}>
-                            <img id="task-btn" src={newTaskBtn} alt="new task button"></img>
+                            {/* <img id="task-btn" src={newTaskBtn} alt="new task button"></img> */}
+                            <TaskOutlineSvg width="100%" height="100%"/>
                             <p id="task-btn">New Task</p>
                         </button>
                         <button id="proj-btn" onClick={handleClick} className={"controls-btn"}>

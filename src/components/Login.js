@@ -1,12 +1,15 @@
 import { GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore/lite';
 
+import { ReactComponent as GoogleSvg } from '../images/icons/google-plus.svg';
+
 function Login(props) {
     //props.auth
     //props.provider
     //props.setUserData()
 
-    const signInWithGoogle = () => {
+    const signInWithGoogle = () => { 
+        console.log("login");
         let errorOut = document.getElementById;
         errorOut.innerHtml = "";
         signInWithPopup(props.auth, props.provider)
@@ -55,7 +58,12 @@ function Login(props) {
     return (
         <div className={"log-in"}>
             <p>toDo List</p>
-            <button onClick={signInWithGoogle}>Sign In with Google</button>
+            <button onClick={signInWithGoogle}>
+                <GoogleSvg />
+                <p>
+                    Sign In With Google
+                </p>
+            </button>
             <p className="login-error"></p>
         </div>
     );

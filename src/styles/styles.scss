@@ -1,0 +1,95 @@
+
+// Main Color Styles
+$bgMain: #f4f7f6;
+$textMainLt: #ffffff;
+$textMainDk: #222222;
+$miscA: #2779a7;
+$miscB: #49c5b6;
+
+
+$radiusRound: 10rem;
+$fontM: 2rem;
+$fontS: 1rem;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+* {
+    box-sizing: border-box;
+    font-family: 'Barlow', sans-serif;
+    font-size: 10px;
+}
+
+
+// Log In Component Styles
+.log-in {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-main);
+
+    p:nth-child(1) {
+        color: $textMainDk;
+        font-size: 8rem;
+        font-family: 'Barlow', sans-serif;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        border-radius: 0.3rem;
+    }
+
+    button {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+
+        background-color: $miscA;
+        border: solid 2px $miscA;
+        color: $textMainLt;
+        font-size: $fontM;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        border-radius: $radiusRound;
+
+        svg {
+            height: 3rem;
+            fill: $textMainLt;
+            margin: 0.5rem;
+        }
+
+        p {
+            color: $miscB;
+            width: 0.1rem;
+            font-size: 2rem;
+            opacity: 0;
+            white-space: nowrap;
+            transition: width 0.5s ease-in;
+        }
+    }
+
+    button:hover {
+        border: solid 2px $miscB;
+        background-color: var(--bg-main);
+        box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.15);
+        color: var(--text-hl);
+        transition: 0.5s;
+
+        svg {
+            fill: $miscB;
+        }
+
+        p {
+            opacity: 1;
+            width: 18rem;
+            visibility: visible;
+            transition: width 0.5s ease-in;
+        }
+    }
+
+    .login-error {
+        color: var(--error-red);
+        font-size: $fontS;
+        padding-top: 0.5rem;
+      }
+}
