@@ -13,6 +13,7 @@ $textMainDk: #222222;
 $miscA: #2779a7;
 $miscB: #49c5b6;
 $miscC: #df6c4f;
+$errRed: rgb(158, 0, 0);
 
 $fontL: 4rem;
 $fontML: 3rem;
@@ -29,7 +30,6 @@ $radiusRound: 10rem;
     font-size: 10px;
 }
 
-
 // Log In Component Styles
 .log-in {
     width: 100vw;
@@ -38,7 +38,7 @@ $radiusRound: 10rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--bg-main);
+    background-color: $bgMain;
 
     p:nth-child(1) {
         color: $textMainDk;
@@ -81,9 +81,9 @@ $radiusRound: 10rem;
 
     button:hover {
         border: solid 2px $miscB;
-        background-color: var(--bg-main);
+        background-color: $bgMain;
         box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.15);
-        color: var(--text-hl);
+        color: $miscB;
         transition: 0.5s;
 
         svg {
@@ -99,7 +99,7 @@ $radiusRound: 10rem;
     }
 
     .login-error {
-        color: var(--error-red);
+        color: $errRed;
         font-size: $fontS;
         padding-top: 0.5rem;
       }
@@ -189,6 +189,47 @@ $radiusRound: 10rem;
     background-color: $bgSub;
     min-width: 350px;
 
+    .nav-container {
+        visibility: visible;
+        transition-property: visibility;
+        transition-delay: 1.5s;
+        transition-duration: 0s;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .user-profile {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 1rem;
+        border-top: 1px solid $bgSelect;
+
+        p {
+            color: $textMainLt;
+            font-size: 1.75rem;
+            padding-bottom: 1rem;
+        }
+
+        button {
+            font-size: 1.4rem;
+            padding: 0.5rem 1rem 0.5rem 1rem;
+            border-radius: $radiusRound;
+            border: 2px solid $miscC;
+            background-color: transparent;
+            color: $miscC;
+        }
+
+        button:hover {
+            background-color: $miscC;
+            color: $textMainDk;
+            transition: 0.3s;
+        }
+
+    }
+
     .controls {
         display: flex;
         flex-direction: row;
@@ -259,7 +300,7 @@ $radiusRound: 10rem;
         display: flex;
         flex-direction: column;
         padding: 1rem;
-        background-color: var(--bkgnd-select);
+        background-color: $bgSelect;
 
         .form-input-item {
             display: flex;
@@ -330,6 +371,14 @@ $radiusRound: 10rem;
 .projects-header {
     padding: 1rem 0rem 0rem 1rem;
     background-color: $bgSub;
+
+    p {
+        font-size: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+        color: $textMainLt;
+    }
 }
 
 
@@ -445,7 +494,7 @@ $radiusRound: 10rem;
         font-size: 2rem;
         padding: 1rem;
         border-radius: 5rem;
-        color: var(--B-0);
+        color: $textMainLt;
         cursor: pointer;
 
         p {
@@ -479,7 +528,6 @@ $radiusRound: 10rem;
     overflow-x: scroll;
 
     .proj-tab {
-        // background-color: var(--B-0);
         border-right: solid 1px $bgHlight;
         max-width: 300px;
         min-width: 200px;
@@ -489,6 +537,8 @@ $radiusRound: 10rem;
             color: $textMainLt;
             background-color: $miscA;
             border-radius: 0.5rem;
+            padding: 1rem;
+            font-size: $fontM;
         }
 
         .task-item {
@@ -638,6 +688,25 @@ $radiusRound: 10rem;
         }
 
     }
+}
+
+.login-error {
+    font-family: 'Barlow', sans-serif;
+    color: $errRed;
+    font-size: 1rem;
+    padding-top: 0.5rem;
+}
+
+.input-error {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+    color: $errRed;
+    visibility: hidden;
+}
+  
+  .input-error.erroneous {
+    visibility: visible;
 }
 
 

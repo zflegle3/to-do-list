@@ -19,9 +19,7 @@ function ProjectForm(props) {
             createProjectData(projInputs);
             form.reset();
         } else {
-            console.log("*invalid inputs*")
-            //prevent submission
-            //report errors
+            console.log("invalid inputs")
         }
     }
 

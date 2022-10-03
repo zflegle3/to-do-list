@@ -52,7 +52,6 @@ function Tab(props) {
             break;
         case "proj":
             let selectedProj = props.user.projects.filter((proj) => proj.id === props.tabDataItem.filterValue);
-            console.log(selectedProj);
             tabTitle= selectedProj[0].title;
             let projTasks = props.user.tasks.filter(task => task.proj === props.tabDataItem.filterValue);
             if (projTasks.length >0) {

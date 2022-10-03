@@ -11,7 +11,6 @@ function ProjectList(props) {
 
     let tasksAll = "";
     const selectProject = (e) => {
-        console.log(e.target);
         let selectedIndex = props.tabData.findIndex((tabData) => tabData.filterValue === e.target.id);
         let newTabData = [...props.tabData];
         if (selectedIndex === -1) { //new project selected > add selection 

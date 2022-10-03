@@ -6,7 +6,6 @@ function FilterList(props) {
     //props.setUserData()
     //props.updateTabData
 
-    let tasksAll = "";
     const selectProject = (e) => {
         let selectedIndex = props.tabData.findIndex((tabData) => tabData.filterValue === e.target.id);
         let newTabData = [...props.tabData];
