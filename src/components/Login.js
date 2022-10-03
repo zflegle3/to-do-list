@@ -60,9 +60,7 @@ function Login(props) {
             <p>toDo List</p>
             <button onClick={signInWithGoogle}>
                 <GoogleSvg />
-                <p>
-                    Sign In With Google
-                </p>
+                <p> Sign In With Google </p>
             </button>
             <p className="login-error"></p>
         </div>

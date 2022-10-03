@@ -10,14 +10,27 @@ function Header (props) {
     if (props.openState) {
         return (
             <div className={"header"}>
-                <OpenSvg  onClick={props.toggleNav}/>
+                {/* <OpenSvg  onClick={props.toggleNav}/> */}
+                
+                <button onClick={props.toggleNav}>
+                    <OpenSvg />
+                    <p>Close Nav</p>
+                </button>
+
                 <p>To Do Tracker</p>
             </div>
         );
     } else {
         return (
             <div className={"header"}>
-                <ClosedSvg onClick={props.toggleNav}/>
+                {/* <ClosedSvg onClick={props.toggleNav}/> */}
+
+                <button onClick={props.toggleNav}>
+                    <ClosedSvg />
+                    <p>Open Nav</p>
+                </button>
+
+
                 <p>To Do Tracker</p>
             </div>
         );

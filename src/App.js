@@ -34,6 +34,7 @@ function App() {
   const [openState, setOpenState] = useState(true); //tabs selected to display
 
   const updateTabData = (newData) => {
+    //
     setTabData(newData);
   }
 
@@ -56,17 +57,20 @@ function App() {
       return (
         <div className="App">
           <Header openState={openState} toggleNav={toggleNav}/>
-          <div className="nav-left compact" id="nav-left">
+          <div className="content-container">
             <Nav user={userData} setUserData={setUserData} auth={auth} db={db} updateTabData={updateTabData} tabData={tabData} setTabData={setTabData}/>
+            <TaskTabs tabData={tabData} setTabData={setTabData} user={userData} setUserData={setUserData} auth={auth} db={db}/>
           </div>
-          <TaskTabs tabData={tabData} setTabData={setTabData} user={userData} setUserData={setUserData} auth={auth} db={db}/>
+
         </div>
       );
     } else {
       return (
         <div className="App">
           <Header openState={openState} toggleNav={toggleNav}/>
-          <TaskTabs tabData={tabData} setTabData={setTabData} user={userData} setUserData={setUserData} auth={auth} db={db}/>
+          <div className="content-container">
+            <TaskTabs tabData={tabData} setTabData={setTabData} user={userData} setUserData={setUserData} auth={auth} db={db}/>
+          </div>
         </div>
       );
     };
