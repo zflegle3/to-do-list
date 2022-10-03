@@ -24,7 +24,6 @@ function ProjectButton(props) {
 
 
     const editProject = (e) => {
-        console.log("Edit Project");
         if (editStatus) {
             setEditStatus(false);
         } else {
@@ -33,20 +32,18 @@ function ProjectButton(props) {
     };
 
     const submitProject = () => {
-        console.log(props.btnId);
-
         let selectedProj = props.user.projects.filter(project => project.id === props.btnId)[0];
         let newTitle = document.querySelector(`#input-${props.btnId}`).value.trim();
 
         if (newTitle === selectedProj.title) {
-            console.log("same title, close edit");
             setEditStatus(false);
         } else {
-            console.log("submit new title");
-            //copy props.user.projects
-            selectedProj.title = newTitle;
-            console.log(selectedProj);
-            editProjectData(selectedProj);
+            if (newTitle.length > 0) {
+                selectedProj.title = newTitle;
+                editProjectData(selectedProj);
+            } else {
+                setEditStatus(false);
+            }
         };
     };
 
@@ -66,40 +63,44 @@ function ProjectButton(props) {
                     projectDataCopy.push(docDataCopy.projects[i])
                 }
             };
-            console.log(projectDataCopy);
-
             docDataCopy.projects = projectDataCopy;
             //set display update
             props.setUserData(docDataCopy);
-            //setDoc
+            //setDoc with updated data
             setDoc(userDoc,docDataCopy);
         } else {
             console.log("error, no user doc found, cant create project.");
         };
     }
 
-    const deleteProject = (e) => {
-        //first Send popup to confirm
-        //if confirmed...
-        console.log("Delete Project");
-
-            //Delete Project
-            //copy props.user.projects
-            console.log(props.user.projects);
-            //filter out projects that match the project id
-            console.log(e.target.id);
-            //set doc with new filtered out data
-
-            //Delete Tasks
-            //copy props.user.tasks
-            console.log(props.user.projects);
-            //filter out tasks that match the project id
-            console.log(e.target.id);
-            //set doc with new filtered out data
-
+    const deleteProject = () => {
+        if (window.confirm("Are you sure you want to delete this project and all related tasks?")) {
+            deleteProjectData(props.btnId);
+        } 
     };
 
-    console.log(editStatus);
+    async function deleteProjectData(deleteId) {
+        //get doc 
+        const userDoc = doc(props.db, `users/U-${props.user.uid}`);
+        // copy doc
+        const userDocSnap = await getDoc(userDoc);
+        if (userDocSnap.exists()) {
+            //Copy data and remove deleted data
+            let docDataCopy = userDocSnap.data();
+            let projectDataCopy = docDataCopy.projects.filter(project => project.id !== deleteId);
+            let projectTaskCopy = docDataCopy.tasks.filter(task => task.proj !== deleteId);
+            //Replace projects and tasks into doc copy
+            docDataCopy.projects = projectDataCopy;
+            docDataCopy.tasks = projectTaskCopy;
+            //set display update
+            props.setUserData(docDataCopy);
+            //setDoc w/ new data
+            setDoc(userDoc,docDataCopy);
+        } else {
+            console.log("error, no user doc found, cant create project.");
+        };
+    }
+
     if (!editStatus) {
         return (
             <div className={props.btnClass}>
