@@ -68,7 +68,7 @@ function Tab(props) {
 
     return (
         <div className={"proj-tab"}>
-            <p>{tabTitle}</p>
+            <p className={"proj-title"}>{tabTitle}</p>
             {tasksAll}
         </div>
     );

@@ -34,7 +34,7 @@ function FilterList(props) {
 
     return (
         <div className={"filter-list"}>
-            <button id="all" className={returnButtonClass("all")} onClick={selectProject}>All Projects</button>
+            <button id="all" className={returnButtonClass("all")} onClick={selectProject}>All Tasks</button>
             <button id="today" className={returnButtonClass("today")} onClick={selectProject}>Due Today</button>
             <button id="week" className={returnButtonClass("week")} onClick={selectProject}>Due this Week</button>
         </div>

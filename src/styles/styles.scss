@@ -281,6 +281,12 @@ $radiusRound: 10rem;
             }
         }
 
+        .button-container {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+        }
+
         button {
             width: 50%;
             color: black;
@@ -465,11 +471,173 @@ $radiusRound: 10rem;
     }
 }
 
-.proj-tab {
-    background-color: var(--B-0);
-    border-right: solid 1px var(--E-1);
-    max-width: 300px;
-    min-width: 200px;
+
+.tabs-all {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+
+    .proj-tab {
+        // background-color: var(--B-0);
+        border-right: solid 1px $bgHlight;
+        max-width: 300px;
+        min-width: 200px;
+
+        .proj-title {
+            margin: 0.5rem;
+            color: $textMainLt;
+            background-color: $miscA;
+            border-radius: 0.5rem;
+        }
+
+        .task-item {
+            display: flex;
+            flex-direction: column;
+            margin: 0.5rem;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            background-color: $bgHlight;
+
+            .task-item-title {
+                font-size: 2rem;
+                padding: 0rem 0rem 0.5rem 0rem;
+                text-decoration: underline;
+            }
+
+            .task-item-text-item {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: flex-start;
+
+                p:nth-child(1) {
+                    font-size: 1.6rem;
+                }
+
+                p:nth-child(2) {
+                    font-size: 1.4rem;
+                    padding-left: 0.5rem;
+                  }
+            }
+        }
+
+        .task-item-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 0.5rem;
+        }
+
+        .task-item-controls {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: nowrap;
+
+            button {
+                font-size: 1.4rem;
+                border-radius: $radiusRound;
+                width: 50%;
+                background-color: transparent;
+
+            }
+
+            .edit-button {
+                border: 2px solid $miscA;
+                color: $miscA;
+            }
+
+            .edit-button:hover {
+                background-color: $miscA;
+                color: $textMainDk;
+            }
+
+            .cancel-button {
+                border: 2px solid $miscC;
+                color: $miscC;
+            }
+
+            .cancel-button:hover {
+                background-color: $miscC;
+                color: $textMainDk;
+            }
+        }
+    }
+
+    .no-tasks {
+        font-size: 1.4rem;
+        padding: 1rem;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        background-color: $bgSubB;
+        margin: 0.5rem;
+        border-radius: .5rem;
+
+        .form-edit-item {
+            display: flex;
+            flex-direction: column;
+
+            label {
+                color: $textMainLt;
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            input, select,textarea {
+                color: $textMainDk;
+                padding: 0.5rem;
+                border: none;
+                border-radius: 0.5rem;
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+        }
+
+        button {
+            width: 50%;
+            color: black;
+            margin: 0px;
+            font-size: 1.5rem;
+            padding: 0.5rem;
+            border: none;
+            border-radius: $radiusRound;
+        }
+
+        .submit-button {
+            border: 2px solid $miscB;
+            background-color: transparent;
+            color: $miscB;
+        }
+
+        .submit-button:hover {
+            background-color: $miscB;
+            color: $textMainDk;
+            transition: 0.3s;
+        }
+
+        .cancel-button {
+            border: 2px solid $miscC;
+            background-color: transparent;
+            color: $miscC;
+        }
+
+        .cancel-button:hover {
+            background-color: $miscC;
+            color: $textMainDk;
+            transition: 0.3s;
+        }
+
+    }
 }
 
 

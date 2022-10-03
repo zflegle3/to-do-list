@@ -134,13 +134,13 @@ table {
   transition-duration: 1s;
 } */
 
-.tabs-all {
+/* .tabs-all {
   width: 100%;
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
   background-color: var(--bg-main);
-}
+} */
 
 
 
@@ -200,7 +200,7 @@ table {
 
 /*Logo*/
 
-.siteLogo {
+/* .siteLogo {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -229,7 +229,7 @@ table {
   font-size: 4rem;
   white-space: nowrap;
   padding: 0.5rem 0rem 0.5rem 0rem;
-}
+} */
 
 
 
@@ -332,13 +332,13 @@ table {
 
 
 /* Selected Button Styles */
-.controls-btn.selected {
+/* .controls-btn.selected { */
   /* background-color: var(--bkgnd-select); */
-  border: none;
+  /* border: none; */
   /* box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.35); */
-  transition: box-shadow, background-color 0.3s;
-}
-
+  /* transition: box-shadow, background-color 0.3s; */
+/* } */
+/* 
 .controls-btn.selected svg {
   fill: var(--A-1);
 }
@@ -347,13 +347,13 @@ button.selected p {
   visibility: visible;
   color: var(--B-0);
   transition: 1s;
-}
+} */
 
 
 
 /*Nav Open/Close Button*/
 
-.button-main.compact {
+/* .button-main.compact {
   height: 100%;
   width: 100%;
   display: flex;
@@ -362,7 +362,7 @@ button.selected p {
   justify-content: flex-start;
   border: none;
   background-color: transparent;
-}
+} */
 
 
 
@@ -420,7 +420,7 @@ button.selected p {
   visibility: visible;
 }
 
-.button-container {
+/* .button-container {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -439,16 +439,16 @@ button.selected p {
 .submit-button:hover {
   color: var(--text-green);
   background-color: var(--btn-green-lt);
-}
+} */
 
-.cancel-button {
+/* .cancel-button {
   width: 50%;
   color: black;
   background-color: var(--btn-red-dk);
   margin: 0px;
   font-size: 1.25rem;
   padding: 0.25rem;
-}
+} */
 
 .cancel-button:hover {
   color: var(--text-red);
@@ -538,12 +538,12 @@ button.tab-select {
   border-bottom: 1px solid var(--bkgnd-highlight);
 }
 
-.task-item {
+/* .task-item {
   display: flex;
   flex-direction: column;
   padding: 1rem;
   border-bottom: 1px solid var(--bkgnd-highlight);
-}
+} */
 
 .task-item.past-due {
   background-color: var(--shade-red);
@@ -561,7 +561,7 @@ button.tab-select {
   background-color: var(--text-hl);
 }
 
-.task-item-controls {
+/* .task-item-controls {
   display: flex;
   gap: 0.5rem;
   flex-wrap: nowrap;
@@ -573,14 +573,14 @@ button.tab-select {
   justify-content: flex-start;
   padding: 0.5rem;
 
-}
+} */
 
-.task-item-title {
+/* .task-item-title {
   font-size: 2rem;
   padding: 0rem 0rem 0.5rem 0rem;
-}
+} */
 
-.task-item-text-item {
+/* .task-item-text-item {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -593,21 +593,20 @@ button.tab-select {
 
 .task-item-text-item p:nth-child(2) {
   font-size: 1.4rem;
-
 }
 
 .task-item p:nth-child(2) {
   font-size: 1.25rem;
   padding-left: 0.5rem;
-}
+} */
 
-.task-item p:nth-child(3) {
+/* .task-item p:nth-child(3) {
   font-size: 1.25rem;
   padding-left: 0.5rem;
-}
+} */
 
 
-.task-item p:nth-child(4) {
+/* .task-item p:nth-child(4) {
   font-size: 1.25rem;
   padding-left: 0.5rem;
 }
@@ -615,18 +614,18 @@ button.tab-select {
 .task-item p:nth-child(5) {
   font-size: 1.25rem;
   padding-left: 0.5rem;
-}
+} */
 
-.no-tasks {
+/* .no-tasks {
   font-size: 1.4rem;
   padding: 1rem;
-}
+} */
 
 
 
 /* Edit Form */
 
-.task-edit-form {
+/* .task-edit-form {
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -642,7 +641,7 @@ button.tab-select {
 .form-edit-item label {
   font-size: 1.2rem;
   padding-bottom: 0.5rem;
-}
+} */
 
 
 
