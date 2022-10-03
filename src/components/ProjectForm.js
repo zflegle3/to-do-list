@@ -83,7 +83,7 @@ function ProjectForm(props) {
                 <p id="proj-input-err-1" className="input-error">Must enter a project name</p>
             </div>
             <div className="button-container">
-                <button onClick={handleSubmit} className="submit-button">Create New Task</button>
+                <button onClick={handleSubmit} className="submit-button">Create New Project</button>
                 <button onClick={closeForm} className="cancel-button">Cancel</button>
             </div>
         </form>

@@ -496,7 +496,7 @@ button.selected p {
   color: var(--bg-main)
 }
 
-.projects-list button {
+/* .projects-list button {
   border: 1px solid var(--bkgnd-highlight);
   background-color: var(--bkgnd-highlight);
   margin: 0.5rem;
@@ -504,32 +504,32 @@ button.selected p {
   padding: 1rem;
   border-radius: 5rem;
   color: var(--B-0);
-}
+} */
 
-.projects-list button:hover {
+/* .projects-list button:hover {
   background-color: var(--bkgnd-select);
   box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.35);
   transition: box-shadow, background-color 0.3s;
 }
 
 button.tab-select {
-  /* background-color: var(--bkgnd-select); */
+  background-color: var(--bkgnd-select);
   border: 1px solid var(--text-hl);
   color: var(--text-hl);
   box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.35);
   transition: box-shadow, background-color 0.3s;
-}
+} */
 
 
 
 /*Task Tabs*/
 
-.proj-tab {
+/* .proj-tab {
   background-color: var(--B-0);
   border-right: solid 1px var(--E-1);
   max-width: 300px;
   min-width: 200px;
-}
+} */
 
 .proj-tab > p:nth-child(1) {
   font-size: 2rem;

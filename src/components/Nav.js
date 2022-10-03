@@ -5,7 +5,8 @@ import NewItemIn from "./NewItemIn";
 import newTaskBtn from "../images/new-task-light.png";
 import newProjBtn from "../images/new-proj-light.png";
 import closeBtn from "../images/close-light.png";
-import ProjectList from "./ProjectList"
+import ProjectList from "./ProjectList";
+import FilterList from "./FilterList";
 
 import { ReactComponent as TaskOutlineSvg } from '../images/icons/task-outline.svg';
 import { ReactComponent as TaskFillSvg } from '../images/task-fill.svg';
@@ -98,10 +99,16 @@ function Nav(props) {
                 </div>
 
                 <NewItemIn formType={formType} setFormType={setFormType} db={props.db} user={props.user} setUserData={props.setUserData} resetControlBtnSelect={resetControlBtnSelect}/>
+                
+                <div className={"projects-header"}>
+                    <p>Filters:</p>
+                </div>
+                <FilterList user={props.user} setUserData={props.setUserData} updateTabData={props.updateTabData} tabData={props.tabData}/>
+
                 <div className={"projects-header"}>
                     <p>Projects:</p>
                 </div>
-                <ProjectList user={props.user} setUserData={props.setUserData} updateTabData={props.updateTabData} tabData={props.tabData}/>
+                <ProjectList user={props.user} setUserData={props.setUserData} updateTabData={props.updateTabData} tabData={props.tabData} db={props.db}/>
                 <div className="user-profile">
                     <p>{props.user.email}</p>
                     <button className="cancel-button" onClick={userLogOut}>Log Out</button>

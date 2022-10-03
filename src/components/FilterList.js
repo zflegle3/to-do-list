@@ -1,9 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import ProjectButton from "./ProjectButton";
-
-function ProjectList(props) {
-    //props.db
+function FilterList(props) {
     //props.tabData
     //props.user
     //props.setUserData()
@@ -11,12 +8,11 @@ function ProjectList(props) {
 
     let tasksAll = "";
     const selectProject = (e) => {
-        console.log(e.target);
         let selectedIndex = props.tabData.findIndex((tabData) => tabData.filterValue === e.target.id);
         let newTabData = [...props.tabData];
         if (selectedIndex === -1) { //new project selected > add selection 
             newTabData.push({
-                filterType: "proj",
+                filterType: `${e.target.id}`,
                 filterValue: `${e.target.id}`,
             });
             props.updateTabData(newTabData); //update tabData by adding new project
@@ -24,7 +20,7 @@ function ProjectList(props) {
             newTabData.splice(selectedIndex,1);
             props.updateTabData(newTabData); //update tabData by removing project
         }
-    }
+    };
 
     const returnButtonClass = (buttonId) => {
         //finds if button/filter's ID is in selected tab Data & adds class per selection
@@ -34,18 +30,15 @@ function ProjectList(props) {
         } else {
             return "tab-select";
         }
-    }
-
-    tasksAll = props.user.projects.map((project) => 
-        <ProjectButton key={uuidv4()} db={props.db} user={props.user} setUserData={props.setUserData} btnId={project.id} btnClass={returnButtonClass(project.id)} selectProject={selectProject} projectTitle={project.title}/>
-    );
+    };
 
     return (
-        <div className={"projects-list"}>
-            {tasksAll}
+        <div className={"filter-list"}>
+            <button id="all" className={returnButtonClass("all")} onClick={selectProject}>All Projects</button>
+            <button id="today" className={returnButtonClass("today")} onClick={selectProject}>Due Today</button>
+            <button id="week" className={returnButtonClass("week")} onClick={selectProject}>Due this Week</button>
         </div>
     );
 }
 
-
-export default ProjectList;
+export default FilterList;
