@@ -25,7 +25,7 @@ function Tab(props) {
                 <TaskItem key={uuidv4()} taskId={task.id} title={task.title} date={task.date} desc={task.desc} status={task.status} proj={task.proj} user={props.user} setUserData={props.setUserData} db={props.db}/>
                 );
             } else {
-                tasksAll = <p >No tasks available.</p>
+                tasksAll = <p className="no-tasks">No tasks available.</p>
             };
             break;
         case "today":
@@ -36,18 +36,18 @@ function Tab(props) {
                 <TaskItem key={uuidv4()} taskId={task.id} title={task.title} date={task.date} desc={task.desc} status={task.status} proj={task.proj} user={props.user} setUserData={props.setUserData} db={props.db}/>
                 );
             } else {
-                tasksAll = <p >No tasks available.</p>
+                tasksAll = <p className="no-tasks">No tasks due today.</p>
             };
             break;
         case "week":
-            tabTitle= "Due This Today";
+            tabTitle= "Due This Week";
             let weekTasks = props.user.tasks.filter(task => 86400000*7 > ((new Date(task.date)) - todayDate) && ((new Date(task.date)) - todayDate)  > 0);
             if (weekTasks.length > 0) {
                 tasksAll = weekTasks.map((task) =>
                 <TaskItem key={uuidv4()} taskId={task.id} title={task.title} date={task.date} desc={task.desc} status={task.status} proj={task.proj} user={props.user} setUserData={props.setUserData} db={props.db}/>
                 );
             } else {
-                tasksAll = <p >No tasks available.</p>
+                tasksAll = <p className="no-tasks">No tasks due this week.</p>
             };
             break;
         case "proj":

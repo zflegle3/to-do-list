@@ -17,7 +17,7 @@ function Header (props) {
                     <p>Close Nav</p>
                 </button>
 
-                <p>To Do Tracker</p>
+                <p>toDo Tracker</p>
             </div>
         );
     } else {

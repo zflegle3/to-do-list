@@ -7,6 +7,8 @@ $bgSubB: #454545;
 
 $bgSelect: rgba(255,255,255,0.15);
 $bgHlight: rgba(0, 0, 0, 0.25);
+$bgComp: rgba(22, 117, 10, 0.25);
+$bgPast: rgba(126, 14, 14, 0.25);
 
 $textMainLt: #ffffff;
 $textMainDk: #222222;
@@ -14,6 +16,7 @@ $miscA: #2779a7;
 $miscB: #49c5b6;
 $miscC: #df6c4f;
 $errRed: rgb(158, 0, 0);
+
 
 $fontL: 4rem;
 $fontML: 3rem;
@@ -526,6 +529,7 @@ $radiusRound: 10rem;
     display: flex;
     flex-direction: row;
     overflow-x: scroll;
+    
 
     .proj-tab {
         border-right: solid 1px $bgHlight;
@@ -540,6 +544,14 @@ $radiusRound: 10rem;
             padding: 1rem;
             font-size: $fontM;
         }
+
+        .task-item.complete {
+            background-color: $bgComp;
+        } 
+
+        .task-item.past-due {
+            background-color: $bgPast;
+        } 
 
         .task-item {
             display: flex;

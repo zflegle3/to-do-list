@@ -57,7 +57,7 @@ function Login(props) {
 
     return (
         <div className={"log-in"}>
-            <p>toDo List</p>
+            <p>toDo Tracker</p>
             <button onClick={signInWithGoogle}>
                 <GoogleSvg />
                 <p> Sign In With Google </p>
