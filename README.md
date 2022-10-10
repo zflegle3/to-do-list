@@ -20,4 +20,4 @@ This project was built as part of The Odin Project JavaScript curriculum in orde
 * SASS
 
 
-![demo image](https://zflegle3.github.io/portfolio-22/static/media/to-do-app.2322018680cb5c2ac170.png)
+![demo image](https://raw.githubusercontent.com/zflegle3/to-do-list/main/src/images/to-do-app-demo.png)
