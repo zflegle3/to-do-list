@@ -1,4 +1,4 @@
-# To Do List App
+# To Do Task Tracking Application
 
 [Live Demo Here!](https://zflegle3.github.io/to-do-list/)
 
